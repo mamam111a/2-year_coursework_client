@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     finditem.cpp \
+    finditem_result.cpp \
     globals.cpp \
     loginwindow.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     center.h \
     finditem.h \
+    finditem_result.h \
     globals.h \
     loginwindow.h \
     mainwindow.h \
@@ -27,6 +29,7 @@ HEADERS += \
 
 FORMS += \
     finditem.ui \
+    finditem_result.ui \
     loginwindow.ui \
     mainwindow.ui \
     regwindow.ui

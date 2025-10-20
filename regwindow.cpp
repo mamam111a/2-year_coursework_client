@@ -9,6 +9,7 @@ RegWindow::RegWindow(MainWindow *parentWindow)
     , ui(new Ui::RegWindow)
     , mainWindow(parentWindow)
 {
+    this->setFixedSize(800, 600);
     ui->setupUi(this);
     if(mainWindow)
         this->resize(mainWindow->size());
@@ -37,7 +38,10 @@ void RegWindow::on_pushButton_clicked()
 
     QString message = "2|" + login + "|" + password + "|" + code;
     sendToServer(socketMain, message);
-    this->close();
+    ui->login->clear();
+    ui->password->clear();
+    ui->code->clear();
+    //this->close();
 }
 
 void RegWindow::on_pushButton_2_clicked()

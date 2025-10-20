@@ -5,23 +5,37 @@
 #include "center.h"
 #include "globals.h"
 #include <QMessageBox>
-
+#include <arpa/inet.h>
+#include "finditem_result.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->show();
+    this->setFixedSize(800, 600);
     centerWindow(this);
     socketMain = new QTcpSocket(this);
     socketMain->connectToHost("127.0.0.1", 7432);
+    connect(this, &MainWindow::ServerMessage, this, &MainWindow::ShowNotification, Qt::QueuedConnection);
     connect(socketMain, &QTcpSocket::readyRead, this, &MainWindow::ReadReply);
     connect(socketMain, &QTcpSocket::connected, this, [](){ });
     connect(socketMain, &QTcpSocket::disconnected, this, [](){});
     connect(socketMain, QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::errorOccurred),
             this, [this](QAbstractSocket::SocketError){
-                QMessageBox::critical(this, "Ошибка", "Ошибка соединения: " + socketMain->errorString());
+                QMessageBox::critical(this, "Ошибка", "Ошибка соединения: " + socketMain->errorString() + "\nПриложение будет закрыто.");
+                QApplication::quit();
             });
+}
+
+void MainWindow::ShowNotification(const QString &msg)
+{
+    QString text = msg;
+    if (!text.isEmpty() && text[0] == '!')
+        text = text.mid(1);  // убираем !
+
+    // Показываем окно уведомления в главном потоке
+    QMessageBox::information(this, "Сервер", text);
 }
 MainWindow::~MainWindow()
 {
@@ -39,22 +53,55 @@ void MainWindow::on_reg_clicked()
 }
 void MainWindow::on_log_clicked()
 {
+
     loginwindow *window = new loginwindow(this);
+    connect(this, &MainWindow::ServerMessage, window, &loginwindow::CheckServerAuth);
     window->setModal(true);
     centerWindow(window);
-    connect(this, &MainWindow::ServerMessage,
-            window, &loginwindow::CheckServerAuth);
+
     window->exec();
     delete window;
 }
-
+void MainWindow::OpenFindItemResult(const QString &message)
+{
+    finditem_result *resultWindow = new finditem_result(this, this);
+    resultWindow->setModal(true);
+    centerWindow(resultWindow);
+    resultWindow->ShowSearchResults(message);
+    resultWindow->show();
+}
 void MainWindow::ReadReply()
 {
-    QByteArray data = socketMain->readAll();
-    QString message = QString::fromUtf8(data);
-    emit ServerMessage(message);
-    QMessageBox::information(this, "Сервер", message);
+    static QByteArray buffer;
+    buffer.append(socketMain->readAll());
+
+    while (buffer.size() >= 4) {
+        quint32 len_net;
+        memcpy(&len_net, buffer.constData(), 4);
+        quint32 msgLen = ntohl(len_net);
+
+        if (buffer.size() < 4 + msgLen)
+            break;  // оставляем данные в буфере до следующего вызова
+
+        QByteArray msgBytes = buffer.mid(4, msgLen);
+        QString message = QString::fromUtf8(msgBytes).trimmed(); // обрезаем лишние пробелы/переводы строки
+
+        if (!message.isEmpty()) {
+            if (message[0] == '!') {
+                emit ServerMessage(message); // уведомление
+            } else if (message[0] == '*') {
+                QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
+                emit DataServerShop(shopList);
+            } else {
+                QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
+                OpenFindItemResult(message); // остальные сообщения
+            }
+        }
+
+        buffer.remove(0, 4 + msgLen);
+    }
 }
+
 
 void MainWindow::on_pushButton_clicked()
 {

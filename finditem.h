@@ -3,7 +3,7 @@
 #include <QTcpSocket>
 #include <QDialog>
 #include "mainwindow.h"
-
+#include <QListWidgetItem>
 namespace Ui {
 class FindItem;
 }
@@ -20,10 +20,14 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
-
+    void CheckState(QListWidgetItem *changedItem);
+public slots:
+    void AddShopsToListWidget(const QStringList &shops);
 private:
     Ui::FindItem *ui;
     MainWindow *mainWindow;
+signals:
+    void DataServerShop(const QString &data);
 };
 
 #endif // FINDITEM_H

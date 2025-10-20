@@ -21,8 +21,9 @@ private slots:
     void on_log_clicked();
     void on_reg_clicked();
     void ReadReply();
-
+    void ShowNotification(const QString &msg);
     void on_pushButton_clicked();
+    void OpenFindItemResult(const QString &message);
 
 private:
     Ui::MainWindow *ui;
@@ -30,6 +31,7 @@ private:
 
 signals:
     void ServerMessage(const QString &message);
+    void DataServerShop(const QStringList &shops);
 };
 
 #endif

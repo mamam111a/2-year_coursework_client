@@ -4,11 +4,12 @@
 #include "sendInfo.h"
 #include <QMessageBox>
 #include "finditem.h"
-#include "center.h"
+
 loginwindow::loginwindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::loginwindow)
 {
+    this->setFixedSize(800, 600);
     ui->setupUi(this);
 }
 
@@ -35,7 +36,8 @@ void loginwindow::on_pushButton_clicked()
     QString message = "1|" + login + "|" + password;
 
     sendToServer(socketMain, message);
-
+    ui->login->clear();
+    ui->password->clear();
 }
 
 void loginwindow::CheckServerAuth(const QString &message)
@@ -50,6 +52,7 @@ void loginwindow::CheckServerAuth(const QString &message)
             findWin->setGeometry(mainWin->geometry());
             findWin->show();
             this->close();
+
         }
         //далее дла администратора
     }

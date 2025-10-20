@@ -10,13 +10,68 @@ FindItem::FindItem(MainWindow *mainWin)
     , ui(new Ui::FindItem)
     , mainWindow(mainWin)
 {
+    this->setFixedSize(800, 600);
     ui->setupUi(this);
 
-    if(mainWindow)
+    if(mainWindow) {
+        connect(mainWindow, &MainWindow::DataServerShop, this, &FindItem::AddShopsToListWidget);
         this->setGeometry(mainWindow->frameGeometry());
-    mainWindow->hide();
+        mainWindow->hide();
+    }
 }
+void FindItem::CheckState(QListWidgetItem *changedItem)
+{
+    if (!changedItem) return;
 
+    ui->listWidget->blockSignals(true); // блокируем сигналы, чтобы изменения не вызывали рекурсию
+
+    if (changedItem->text() == "В ЛЮБОМ МАГАЗИНЕ") {
+        if (changedItem->checkState() == Qt::Checked) {
+            // снимаем галочки со всех остальных
+            for (int i = 0; i < ui->listWidget->count(); i++) {
+                QListWidgetItem *item = ui->listWidget->item(i);
+                if (item != changedItem) {
+                    item->setCheckState(Qt::Unchecked);
+                }
+            }
+        }
+    } else {
+        // если выбран обычный магазин, снимаем галочку "В любом магазине"
+        QListWidgetItem *anyShopItem = ui->listWidget->item(0);
+        if (anyShopItem->checkState() == Qt::Checked) {
+            anyShopItem->setCheckState(Qt::Unchecked);
+        }
+    }
+
+    ui->listWidget->blockSignals(false); // разблокируем сигналы
+}
+void FindItem::AddShopsToListWidget(const QStringList &shops)
+{
+    ui->listWidget->clear(); // очищаем старые элементы
+
+    // "В любом магазине"
+    QListWidgetItem *anyShopItem = new QListWidgetItem("В ЛЮБОМ МАГАЗИНЕ", ui->listWidget);
+    anyShopItem->setFlags(anyShopItem->flags() | Qt::ItemIsUserCheckable);
+    anyShopItem->setCheckState(Qt::Unchecked);
+    ui->listWidget->addItem(anyShopItem);
+
+    // остальные магазины
+    for (const QString &shop : shops) {
+        QStringList parts = shop.split(';');
+        if (parts.size() >= 4) {
+            QString displayText = QString("\"%1\" по адресу: %2 (%3)").arg(parts[1], parts[2], parts[3]);
+            QListWidgetItem *item = new QListWidgetItem(displayText, ui->listWidget);
+            item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+            item->setCheckState(Qt::Unchecked);
+            ui->listWidget->addItem(item);
+        }
+    }
+
+    ui->listWidget->setSelectionMode(QAbstractItemView::NoSelection); // отключаем выделение
+
+    // подключаем слот для отслеживания изменений галочек
+    connect(ui->listWidget, &QListWidget::itemChanged, this, &FindItem::CheckState);
+}
 FindItem::~FindItem()
 {
     delete ui;
@@ -24,6 +79,8 @@ FindItem::~FindItem()
 
 void FindItem::on_pushButton_clicked()
 {
+    QString message = "0|logout";
+    sendToServer(socketMain, message);
     this->close();
     if (mainWindow) {
         QSize findSize = this->size();
@@ -43,13 +100,30 @@ void FindItem::on_pushButton_2_clicked()
     QString name = ui->name->text();
     QString publisher = ui->publisher->text();
     QString publisher_year = ui->publisher_year->text();
-
     if (section.contains("|") || author.contains("|") || name.contains("|") ||
         publisher.contains("|") || publisher_year.contains("|")) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    QString message = section + "|" + author + "|" + name + "|" + publisher + "|" + publisher_year;
+    if (section.isEmpty() && author.isEmpty() && name.isEmpty() &&
+        publisher.isEmpty() && publisher_year.isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение для поиска");
+        return;
+    }
+    QList<int> selectedInd;
+    for (int i = 0; i < ui->listWidget->count(); i++) {
+        QListWidgetItem *item = ui->listWidget->item(i);
+        if (item->checkState() == Qt::Checked) {
+            selectedInd.append(i);
+        }
+    }
+
+    QString indString;
+    for (int x : selectedInd) {
+        indString += QString::number(x) + ",";
+    }
+    indString.chop(1);
+    QString message = section + "|" + author + "|" + name + "|" + publisher + "|" + publisher_year + "|" + indString;
     sendToServer(socketMain, message);
 }
 
