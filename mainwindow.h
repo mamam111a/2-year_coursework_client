@@ -24,6 +24,7 @@ private slots:
     void ShowNotification(const QString &msg);
     void on_pushButton_clicked();
     void OpenFindItemResult(const QString &message);
+    void OpenFindShopResult(const QString &message);
 
 private:
     Ui::MainWindow *ui;

@@ -19,30 +19,17 @@
      <x>50</x>
      <y>80</y>
      <width>691</width>
-     <height>401</height>
+     <height>371</height>
     </rect>
    </property>
    <property name="title">
     <string/>
    </property>
-   <widget class="QLabel" name="label_23">
-    <property name="geometry">
-     <rect>
-      <x>-10</x>
-      <y>10</y>
-      <width>691</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Для выбора нескольких вариантов &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;перечислите критерии в одной строке, используя союз &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;или&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&amp;quot; &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Например: &amp;quot;Трагедия или комедия&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>110</y>
+      <y>40</y>
       <width>691</width>
       <height>171</height>
      </rect>
@@ -104,7 +91,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>280</y>
+      <y>230</y>
       <width>121</width>
       <height>111</height>
      </rect>
@@ -117,7 +104,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>280</y>
+      <y>230</y>
       <width>561</width>
       <height>121</height>
      </rect>
@@ -157,7 +144,7 @@
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>500</y>
+     <y>480</y>
      <width>231</width>
      <height>31</height>
     </rect>

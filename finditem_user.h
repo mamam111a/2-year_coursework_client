@@ -1,5 +1,5 @@
-#ifndef FINDITEM_H
-#define FINDITEM_H
+#ifndef FINDITEM_USER_H
+#define FINDITEM_USER_H
 #include <QTcpSocket>
 #include <QDialog>
 #include "mainwindow.h"
@@ -30,4 +30,4 @@ signals:
     void DataServerShop(const QString &data);
 };
 
-#endif // FINDITEM_H
+#endif // FINDITEM_USER_H

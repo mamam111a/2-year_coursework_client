@@ -37,7 +37,7 @@ void finditem_result::CopySelectedCells()
 
     QApplication::clipboard()->setText(copiedText);
 }
-void finditem_result::ShowSearchResults(const QString &message)
+void finditem_result::ShowSearchResultsBooks(const QString &message)
 {
     QStringList rows = message.split("\n", Qt::SkipEmptyParts);
     if (rows.isEmpty()) {
@@ -59,9 +59,9 @@ void finditem_result::ShowSearchResults(const QString &message)
     });
     table->setRowCount(rows.size());
 
-    for (int rowNum = 0; rowNum < rows.size(); ++rowNum) {
+    for (int rowNum = 0; rowNum < rows.size(); rowNum++) {
         QStringList cols = rows[rowNum].split(";", Qt::SkipEmptyParts);
-        for (int col = 1; col < cols.size() && col <= table->columnCount(); ++col) {
+        for (int col = 1; col < cols.size() && col <= table->columnCount(); col++) {
             QTableWidgetItem *item = new QTableWidgetItem(cols[col].trimmed());
             item->setTextAlignment(Qt::AlignCenter);
             item->setFlags(item->flags() & ~Qt::ItemIsEditable);
@@ -70,15 +70,47 @@ void finditem_result::ShowSearchResults(const QString &message)
         }
     }
 
-
-    // Горизонтальные колонки растягиваются
     table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    // Включаем перенос текста и авто-изменение высоты строк
     table->setWordWrap(true);
     table->resizeRowsToContents();
+    table->updateGeometry();
+    table->viewport()->update();
+}
 
-    // Обновляем виджет, чтобы перенос сработал корректно
+
+void finditem_result::ShowSearchResultsShops(const QString &message) {
+    QStringList rows = message.split("\n", Qt::SkipEmptyParts);
+    if (rows.isEmpty()) {
+        QMessageBox::information(this, "Результат", "Ничего не найдено.");
+        return;
+    }
+
+    QTableWidget *table = ui->tableWidget;
+    if (!table) {
+        QMessageBox::warning(this, "Ошибка", "Таблица не найдена в интерфейсе!");
+        return;
+    }
+
+    table->clear();
+    table->setColumnCount(3);
+    table->setHorizontalHeaderLabels({
+        "Название", "Адрес", "Время работы"
+    });
+    table->setRowCount(rows.size());
+
+    for (int rowNum = 0; rowNum < rows.size(); rowNum++) {
+        QStringList cols = rows[rowNum].split(";", Qt::SkipEmptyParts);
+        for (int col = 1; col < cols.size() && col <= table->columnCount(); col++) {
+            QTableWidgetItem *item = new QTableWidgetItem(cols[col].trimmed());
+            item->setTextAlignment(Qt::AlignCenter);
+            item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+            item->setData(Qt::TextAlignmentRole, Qt::AlignCenter);
+            table->setItem(rowNum, col - 1, item);
+        }
+    }
+    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    table->setWordWrap(true);
+    table->resizeRowsToContents();
     table->updateGeometry();
     table->viewport()->update();
 }

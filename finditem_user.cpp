@@ -1,5 +1,5 @@
-#include "finditem.h"
-#include "ui_finditem.h"
+#include "finditem_user.h"
+#include "ui_finditem_user.h"
 #include "globals.h"
 #include <QMessageBox>
 #include "sendInfo.h"
@@ -27,7 +27,6 @@ void FindItem::CheckState(QListWidgetItem *changedItem)
 
     if (changedItem->text() == "В ЛЮБОМ МАГАЗИНЕ") {
         if (changedItem->checkState() == Qt::Checked) {
-            // снимаем галочки со всех остальных
             for (int i = 0; i < ui->listWidget->count(); i++) {
                 QListWidgetItem *item = ui->listWidget->item(i);
                 if (item != changedItem) {
@@ -36,7 +35,6 @@ void FindItem::CheckState(QListWidgetItem *changedItem)
             }
         }
     } else {
-        // если выбран обычный магазин, снимаем галочку "В любом магазине"
         QListWidgetItem *anyShopItem = ui->listWidget->item(0);
         if (anyShopItem->checkState() == Qt::Checked) {
             anyShopItem->setCheckState(Qt::Unchecked);
@@ -49,13 +47,11 @@ void FindItem::AddShopsToListWidget(const QStringList &shops)
 {
     ui->listWidget->clear(); // очищаем старые элементы
 
-    // "В любом магазине"
     QListWidgetItem *anyShopItem = new QListWidgetItem("В ЛЮБОМ МАГАЗИНЕ", ui->listWidget);
     anyShopItem->setFlags(anyShopItem->flags() | Qt::ItemIsUserCheckable);
-    anyShopItem->setCheckState(Qt::Unchecked);
+    anyShopItem->setCheckState(Qt::Checked);
     ui->listWidget->addItem(anyShopItem);
 
-    // остальные магазины
     for (const QString &shop : shops) {
         QStringList parts = shop.split(';');
         if (parts.size() >= 4) {
@@ -67,9 +63,7 @@ void FindItem::AddShopsToListWidget(const QStringList &shops)
         }
     }
 
-    ui->listWidget->setSelectionMode(QAbstractItemView::NoSelection); // отключаем выделение
-
-    // подключаем слот для отслеживания изменений галочек
+    ui->listWidget->setSelectionMode(QAbstractItemView::NoSelection);
     connect(ui->listWidget, &QListWidget::itemChanged, this, &FindItem::CheckState);
 }
 FindItem::~FindItem()
@@ -82,15 +76,15 @@ void FindItem::on_pushButton_clicked()
     QString message = "0|logout";
     sendToServer(socketMain, message);
     this->close();
+    QSize findSize = this->size();
+    QPoint findPos = this->pos();
+    QSize mainSize = mainWindow->size();
+    int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
+    int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
     if (mainWindow) {
-        QSize findSize = this->size();
-        QPoint findPos = this->pos();
-        QSize mainSize = mainWindow->size();
-        int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
-        int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
-        mainWindow->move(x, y);
         mainWindow->show();
     }
+    mainWindow->move(x, y);
 
 }
 void FindItem::on_pushButton_2_clicked()

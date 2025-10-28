@@ -19,7 +19,8 @@ private:
     Ui::finditem_result *ui;
     MainWindow *mainWindow;
 public slots:
-    void ShowSearchResults(const QString &message);
+    void ShowSearchResultsBooks(const QString &message);
+    void ShowSearchResultsShops(const QString &message);
 private slots:
     void CopySelectedCells();
     void on_pushButton_clicked();

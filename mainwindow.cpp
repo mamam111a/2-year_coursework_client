@@ -32,9 +32,7 @@ void MainWindow::ShowNotification(const QString &msg)
 {
     QString text = msg;
     if (!text.isEmpty() && text[0] == '!')
-        text = text.mid(1);  // убираем !
-
-    // Показываем окно уведомления в главном потоке
+        text = text.mid(1);
     QMessageBox::information(this, "Сервер", text);
 }
 MainWindow::~MainWindow()
@@ -67,7 +65,15 @@ void MainWindow::OpenFindItemResult(const QString &message)
     finditem_result *resultWindow = new finditem_result(this, this);
     resultWindow->setModal(true);
     centerWindow(resultWindow);
-    resultWindow->ShowSearchResults(message);
+    resultWindow->ShowSearchResultsBooks(message);
+    resultWindow->show();
+}
+void MainWindow::OpenFindShopResult(const QString &message)
+{
+    finditem_result *resultWindow = new finditem_result(this, this);
+    resultWindow->setModal(true);
+    centerWindow(resultWindow);
+    resultWindow->ShowSearchResultsShops(message);
     resultWindow->show();
 }
 void MainWindow::ReadReply()
@@ -81,20 +87,24 @@ void MainWindow::ReadReply()
         quint32 msgLen = ntohl(len_net);
 
         if (buffer.size() < 4 + msgLen)
-            break;  // оставляем данные в буфере до следующего вызова
+            break;
 
         QByteArray msgBytes = buffer.mid(4, msgLen);
-        QString message = QString::fromUtf8(msgBytes).trimmed(); // обрезаем лишние пробелы/переводы строки
+        QString message = QString::fromUtf8(msgBytes).trimmed();
 
         if (!message.isEmpty()) {
             if (message[0] == '!') {
-                emit ServerMessage(message); // уведомление
+                emit ServerMessage(message);
             } else if (message[0] == '*') {
                 QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
                 emit DataServerShop(shopList);
-            } else {
+            } else if (message[0] == '#'){
                 QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
-                OpenFindItemResult(message); // остальные сообщения
+                OpenFindItemResult(message);
+            }
+            else if (message[0] == '%'){
+                QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
+                OpenFindShopResult(message);
             }
         }
 
