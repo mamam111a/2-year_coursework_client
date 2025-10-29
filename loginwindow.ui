@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #F5F2E7;
+    color: black;
+</string>
+  </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
@@ -21,6 +26,22 @@
      <width>131</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #01eb00; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #01a800 /* Ещё темнее при нажатии */
+}
+</string>
    </property>
    <property name="text">
     <string>Готово</string>
@@ -47,6 +68,9 @@
      <width>311</width>
      <height>191</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
    </property>
    <property name="title">
     <string/>
@@ -125,6 +149,11 @@
      <width>171</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+</string>
    </property>
    <property name="text">
     <string>Вернуться назад</string>

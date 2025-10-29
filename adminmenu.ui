@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #F5F2E7;
+    color: black;
+</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -35,6 +40,9 @@
      <height>321</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
+   </property>
    <property name="title">
     <string/>
    </property>
@@ -50,6 +58,22 @@
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <widget class="QPushButton" name="readbooks">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #2196F3; 
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #1976D2;
+}
+QPushButton:pressed {
+    background-color: #0D47A1;
+}</string>
+       </property>
        <property name="text">
         <string>Просмотреть произведения</string>
        </property>
@@ -57,6 +81,22 @@
      </item>
      <item>
       <widget class="QPushButton" name="readshops">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #2196F3; 
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #1976D2;
+}
+QPushButton:pressed {
+    background-color: #0D47A1;
+}</string>
+       </property>
        <property name="text">
         <string>Просмотреть магазины</string>
        </property>
@@ -76,6 +116,22 @@
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QPushButton" name="deletebooks">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #FF7F7F; /* мягкий красный */
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #E06666; /* чуть темнее при наведении */
+}
+QPushButton:pressed {
+    background-color: #C05050; /* ещё темнее при нажатии */
+}</string>
+       </property>
        <property name="text">
         <string>Удалить произведение</string>
        </property>
@@ -83,6 +139,22 @@
      </item>
      <item>
       <widget class="QPushButton" name="deleteshops">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #FF7F7F; /* мягкий красный */
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #E06666; /* чуть темнее при наведении */
+}
+QPushButton:pressed {
+    background-color: #C05050; /* ещё темнее при нажатии */
+}</string>
+       </property>
        <property name="text">
         <string>Удалить магазин</string>
        </property>
@@ -102,6 +174,22 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="addbooks">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #01EB00; 
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #01C700;
+}
+QPushButton:pressed {
+    background-color: #019900;
+}</string>
+       </property>
        <property name="text">
         <string>Добавить произведение</string>
        </property>
@@ -109,6 +197,22 @@
      </item>
      <item>
       <widget class="QPushButton" name="addshops">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #01EB00; 
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #01C700;
+}
+QPushButton:pressed {
+    background-color: #019900;
+}</string>
+       </property>
        <property name="text">
         <string>Добавить магазин</string>
        </property>
@@ -128,6 +232,22 @@
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
       <widget class="QPushButton" name="updatebooks">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #FF9500; 
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #D87A00;
+}
+QPushButton:pressed {
+    background-color: #B56200;
+}</string>
+       </property>
        <property name="text">
         <string>Изменить произведение</string>
        </property>
@@ -135,6 +255,22 @@
      </item>
      <item>
       <widget class="QPushButton" name="updateshops">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #FF9500; 
+    color: black;          
+    border: none;        
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #D87A00;
+}
+QPushButton:pressed {
+    background-color: #B56200;
+}</string>
+       </property>
        <property name="text">
         <string>Изменить магазин</string>
        </property>
@@ -151,6 +287,13 @@
      <width>191</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+
+
+</string>
    </property>
    <property name="text">
     <string>Вернуться назад</string>

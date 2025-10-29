@@ -35,6 +35,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+</string>
+   </property>
    <property name="text">
     <string>Вернуться назад</string>
    </property>
@@ -48,15 +54,18 @@
      <height>371</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
+   </property>
    <property name="title">
     <string/>
    </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>60</y>
-      <width>681</width>
+      <width>651</width>
       <height>284</height>
      </rect>
     </property>
@@ -69,7 +78,11 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="section"/>
+      <widget class="QLineEdit" name="section">
+       <property name="placeholderText">
+        <string> Введите жанр произведения</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -79,7 +92,11 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="author"/>
+      <widget class="QLineEdit" name="author">
+       <property name="placeholderText">
+        <string>Введите автора произведения</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
@@ -89,7 +106,11 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="name"/>
+      <widget class="QLineEdit" name="name">
+       <property name="placeholderText">
+        <string>Введите название произведения</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
@@ -99,7 +120,11 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="publisher"/>
+      <widget class="QLineEdit" name="publisher">
+       <property name="placeholderText">
+        <string>Введите издателя экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="label_5">
@@ -109,7 +134,11 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QLineEdit" name="publisher_year"/>
+      <widget class="QLineEdit" name="publisher_year">
+       <property name="placeholderText">
+        <string>Введите год выпуска экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="label_6">
@@ -119,7 +148,11 @@
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="QLineEdit" name="quantity"/>
+      <widget class="QLineEdit" name="quantity">
+       <property name="placeholderText">
+        <string>Введите количество экземпляров</string>
+       </property>
+      </widget>
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_7">
@@ -129,7 +162,11 @@
       </widget>
      </item>
      <item row="6" column="1">
-      <widget class="QLineEdit" name="price"/>
+      <widget class="QLineEdit" name="price">
+       <property name="placeholderText">
+        <string>Введите цену экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="label_8">
@@ -139,7 +176,11 @@
       </widget>
      </item>
      <item row="7" column="1">
-      <widget class="QLineEdit" name="additional_info"/>
+      <widget class="QLineEdit" name="additional_info">
+       <property name="placeholderText">
+        <string>Введите доп. информацию экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item row="8" column="0">
       <widget class="QLabel" name="dfgdgf">
@@ -149,7 +190,11 @@
       </widget>
      </item>
      <item row="8" column="1">
-      <widget class="QLineEdit" name="numberShop"/>
+      <widget class="QLineEdit" name="numberShop">
+       <property name="placeholderText">
+        <string>Введите номер магазина, где хранится экземпляр</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -162,6 +207,26 @@
      <width>231</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #01eb00; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #01a800 /* Ещё темнее при нажатии */
+}
+
+
+
+</string>
    </property>
    <property name="text">
     <string>Найти</string>

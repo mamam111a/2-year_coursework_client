@@ -35,6 +35,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+</string>
+   </property>
    <property name="text">
     <string>Вернуться назад</string>
    </property>
@@ -48,6 +54,9 @@
      <height>391</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
+   </property>
    <property name="title">
     <string/>
    </property>
@@ -55,9 +64,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>10</y>
       <width>551</width>
-      <height>361</height>
+      <height>371</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -131,31 +140,67 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLineEdit" name="section"/>
+        <widget class="QLineEdit" name="section">
+         <property name="placeholderText">
+          <string>Введите жанр произведения</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="author"/>
+        <widget class="QLineEdit" name="author">
+         <property name="placeholderText">
+          <string>Введите автора произведения</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="title"/>
+        <widget class="QLineEdit" name="title">
+         <property name="placeholderText">
+          <string>Введите название произведения</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="publisher"/>
+        <widget class="QLineEdit" name="publisher">
+         <property name="placeholderText">
+          <string>Введите издателя экземпляра</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="publisher_year"/>
+        <widget class="QLineEdit" name="publisher_year">
+         <property name="placeholderText">
+          <string>Введите год издания экземпляра</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="quantity"/>
+        <widget class="QLineEdit" name="quantity">
+         <property name="placeholderText">
+          <string>Введите количество экземпляров</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="price"/>
+        <widget class="QLineEdit" name="price">
+         <property name="placeholderText">
+          <string>Введите цену экземпляра</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="additionalinfo"/>
+        <widget class="QLineEdit" name="additionalinfo">
+         <property name="placeholderText">
+          <string>Введите доп.информацию экземпляра</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="numbershop"/>
+        <widget class="QLineEdit" name="numbershop">
+         <property name="placeholderText">
+          <string>Введите номер магазина, где хранится экземпляр</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -170,6 +215,25 @@
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #01eb00; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #01a800 /* Ещё темнее при нажатии */
+}
+
+
+</string>
    </property>
    <property name="text">
     <string>Готово</string>

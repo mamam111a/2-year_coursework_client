@@ -16,26 +16,52 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: #F5F2E7;
+    color: black;</string>
+   </property>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>200</x>
       <y>200</y>
       <width>401</width>
-      <height>251</height>
+      <height>261</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+    background-color: white;   /* Белый фон всей рамки */
+    border: 1px solid #C0C0C0; /* Светло-серая рамка */
+    border-radius: 6px;
+    margin-top: 20px;          /* Отступ для заголовка */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 6px;
+    background: transparent;   /* Прозрачный фон под текстом заголовка */
+}
+
+QGroupBox QWidget {
+    background-color: white;   /* Белый фон внутри блока */
+}</string>
     </property>
     <property name="title">
      <string/>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>20</y>
+       <y>30</y>
        <width>341</width>
-       <height>211</height>
+       <height>214</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -48,6 +74,24 @@
       </item>
       <item>
        <widget class="QPushButton" name="log">
+        <property name="styleSheet">
+         <string notr="true">QPushButton#log {
+    background-color: #01EB00; /* Очень ярко-зелёный */
+    color: black;              /* Черный текст */
+	border: none;              /* Без обводки */
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+
+QPushButton#log:hover {
+    background-color: #01C700; /* Темнее при наведении */
+}
+
+QPushButton#log:pressed {
+    background-color: #019900; /* Ещё темнее при нажатии */
+}</string>
+        </property>
         <property name="text">
          <string>Авторизация</string>
         </property>
@@ -62,6 +106,24 @@
       </item>
       <item>
        <widget class="QPushButton" name="reg">
+        <property name="styleSheet">
+         <string notr="true">QPushButton#reg {
+    background-color: #2196F3; /* Синий основной */
+    color: black;              /* Черный текст */
+    border: none;              /* Без обводки */
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+
+QPushButton#reg:hover {
+    background-color: #1976D2; /* Темнее при наведении */
+}
+
+QPushButton#reg:pressed {
+    background-color: #0D47A1; /* Ещё темнее при нажатии */
+}</string>
+        </property>
         <property name="text">
          <string>Регистрация</string>
         </property>
@@ -73,11 +135,26 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>310</x>
       <y>520</y>
-      <width>191</width>
+      <width>181</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#pushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton#pushButton:hover {
+    background-color: #D32F2F; /* Темнее при наведении */
+}
+
+QPushButton#pushButton:pressed {
+    background-color: #B71C1C; /* Ещё темнее при нажатии */
+}</string>
     </property>
     <property name="text">
      <string>Выход из приложения</string>
@@ -96,7 +173,11 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Добро пожаловать в справочную систему&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;📕📗📘 &lt;/span&gt;&lt;span style=&quot; font-size:31pt;&quot;&gt;Книжные магазины &lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;📘📗📕&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <zorder>label</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>pushButton</zorder>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -107,7 +188,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

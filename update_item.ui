@@ -19,8 +19,11 @@
      <x>30</x>
      <y>70</y>
      <width>741</width>
-     <height>431</height>
+     <height>441</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
    </property>
    <property name="title">
     <string/>
@@ -35,26 +38,29 @@
      </rect>
     </property>
     <property name="text">
-     <string>По какому критерию выбрать данные для изменения:</string>
+     <string>По какому критерию выбрать данные для изменения?</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="newVal_2">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>390</y>
+      <y>400</y>
       <width>531</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Введите новое значение, которое заменит инфо. выбранного параметра</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>380</y>
+      <y>400</y>
       <width>171</width>
-      <height>51</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -71,7 +77,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Колонка для изменения</string>
+     <string>Какой параметр изменить?</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget_3">
@@ -160,35 +166,71 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QLineEdit" name="section_3"/>
+      <widget class="QLineEdit" name="section_3">
+       <property name="placeholderText">
+        <string>Введите жанр произведения</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="author_3"/>
+      <widget class="QLineEdit" name="author_3">
+       <property name="placeholderText">
+        <string>Введите автора произведения</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="title_2"/>
+      <widget class="QLineEdit" name="title_2">
+       <property name="placeholderText">
+        <string>Введите название произведения</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="publisher_2"/>
+      <widget class="QLineEdit" name="publisher_2">
+       <property name="placeholderText">
+        <string>Введите издателя экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="publisher_year_2"/>
+      <widget class="QLineEdit" name="publisher_year_2">
+       <property name="placeholderText">
+        <string>Введите год издания экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="quantity_2"/>
+      <widget class="QLineEdit" name="quantity_2">
+       <property name="placeholderText">
+        <string>Введите количество экземпляров</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="price_2"/>
+      <widget class="QLineEdit" name="price_2">
+       <property name="placeholderText">
+        <string>Введите цену экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="additionalinfo_2"/>
+      <widget class="QLineEdit" name="additionalinfo_2">
+       <property name="placeholderText">
+        <string>Введите доп. информацию экземпляра</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="shopNumber_3"/>
+      <widget class="QLineEdit" name="shopNumber_3">
+       <property name="placeholderText">
+        <string>Введите номер магазина, где хранится</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -286,6 +328,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+</string>
+   </property>
    <property name="text">
     <string>Вернуться назад</string>
    </property>
@@ -294,10 +342,30 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>510</y>
+     <y>520</y>
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #01eb00; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #01a800 /* Ещё темнее при нажатии */
+}
+
+
+
+</string>
    </property>
    <property name="text">
     <string>Готово</string>

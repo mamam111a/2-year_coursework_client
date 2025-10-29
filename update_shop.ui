@@ -22,6 +22,9 @@
      <height>421</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
+   </property>
    <property name="title">
     <string/>
    </property>
@@ -35,7 +38,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>По какому критерию выбрать данные для изменения:</string>
+     <string>По какому критерию выбрать данные для изменения?</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="newVal">
@@ -46,6 +49,9 @@
       <width>551</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Введите новое значение, которое заменит значение выбранного параметра</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
@@ -71,7 +77,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Колонка для изменения</string>
+     <string>Какой параметр изменить?</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="radioButton_10">
@@ -113,7 +119,7 @@
      <string>Рабочие часы</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>11</x>
@@ -151,9 +157,12 @@
      <rect>
       <x>180</x>
       <y>100</y>
-      <width>371</width>
+      <width>351</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Введите название магазина</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="workinghours_2">
@@ -161,9 +170,12 @@
      <rect>
       <x>180</x>
       <y>300</y>
-      <width>371</width>
+      <width>351</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Введите рабочие часы магазина</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="address_2">
@@ -171,9 +183,12 @@
      <rect>
       <x>181</x>
       <y>197</y>
-      <width>371</width>
+      <width>351</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Введите адрес магазина</string>
     </property>
    </widget>
   </widget>
@@ -185,6 +200,12 @@
      <width>141</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+</string>
    </property>
    <property name="text">
     <string>Вернуться назад</string>
@@ -198,6 +219,26 @@
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #01eb00; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #01a800 /* Ещё темнее при нажатии */
+}
+
+
+
+</string>
    </property>
    <property name="text">
     <string>Готово</string>

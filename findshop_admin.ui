@@ -22,6 +22,24 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #01eb00; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #01a800 /* Ещё темнее при нажатии */
+}
+
+</string>
+   </property>
    <property name="text">
     <string>Готово</string>
    </property>
@@ -34,6 +52,9 @@
      <width>641</width>
      <height>361</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
    </property>
    <property name="title">
     <string/>
@@ -58,7 +79,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="name_3"/>
+        <widget class="QLineEdit" name="name_3">
+         <property name="placeholderText">
+          <string>Введите название магазина</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -72,7 +97,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="adress_3"/>
+        <widget class="QLineEdit" name="adress_3">
+         <property name="placeholderText">
+          <string>Введите адрес магазина</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -86,7 +115,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="workingtime_3"/>
+        <widget class="QLineEdit" name="workingtime_3">
+         <property name="placeholderText">
+          <string>Введите рабочие часы магазина</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -114,6 +147,12 @@
      <width>141</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: black; /* Черный текст */ } QPushButton:hover { background-color: #D32F2F; /* Темнее при наведении */ } QPushButton:pressed { background-color: #B71C1C; /* Ещё темнее при нажатии */ }
+</string>
    </property>
    <property name="text">
     <string>Вернуться назад</string>
