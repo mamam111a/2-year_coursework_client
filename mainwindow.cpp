@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <arpa/inet.h>
 #include "finditem_result.h"
+#include "sendInfo.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -107,7 +108,7 @@ void MainWindow::ReadReply()
                 OpenFindShopResult(message);
             }
         }
-
+        sendToServer(socketMain, "OK");
         buffer.remove(0, 4 + msgLen);
     }
 }
