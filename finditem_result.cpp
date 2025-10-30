@@ -9,6 +9,8 @@ finditem_result::finditem_result(MainWindow *mainWin, QWidget *parent)
     , ui(new Ui::finditem_result)
     , mainWindow(mainWin)
 {
+    this->setFixedSize(1221, 625);
+
 
     ui->setupUi(this);
     connect(ui->copyButton, &QPushButton::clicked, this, &finditem_result::CopySelectedCells);

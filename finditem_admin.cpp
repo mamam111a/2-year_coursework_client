@@ -10,6 +10,7 @@ finditem_admin::finditem_admin(adminMenu* adminmenu)
     , adminmenu(adminmenu)
 {
     ui->setupUi(this);
+    this->setFixedSize(800, 600);
 }
 
 finditem_admin::~finditem_admin()

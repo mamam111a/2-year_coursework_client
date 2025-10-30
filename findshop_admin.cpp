@@ -9,6 +9,7 @@ findshop_admin::findshop_admin(adminMenu* adminmenu)
     , adminmenu(adminmenu)
 {
     ui->setupUi(this);
+    this->setFixedSize(800, 600);
 }
 
 
