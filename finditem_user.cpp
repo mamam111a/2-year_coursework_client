@@ -23,7 +23,7 @@ void FindItem::CheckState(QListWidgetItem *changedItem)
 {
     if (!changedItem) return;
 
-    ui->listWidget->blockSignals(true); // блокируем сигналы, чтобы изменения не вызывали рекурсию
+    ui->listWidget->blockSignals(true);
 
     if (changedItem->text() == "В ЛЮБОМ МАГАЗИНЕ") {
         if (changedItem->checkState() == Qt::Checked) {
@@ -41,11 +41,11 @@ void FindItem::CheckState(QListWidgetItem *changedItem)
         }
     }
 
-    ui->listWidget->blockSignals(false); // разблокируем сигналы
+    ui->listWidget->blockSignals(false);
 }
 void FindItem::AddShopsToListWidget(const QStringList &shops)
 {
-    ui->listWidget->clear(); // очищаем старые элементы
+    ui->listWidget->clear();
 
     QListWidgetItem *anyShopItem = new QListWidgetItem("В ЛЮБОМ МАГАЗИНЕ", ui->listWidget);
     anyShopItem->setFlags(anyShopItem->flags() | Qt::ItemIsUserCheckable);
@@ -55,7 +55,8 @@ void FindItem::AddShopsToListWidget(const QStringList &shops)
     for (const QString &shop : shops) {
         QStringList parts = shop.split(';');
         if (parts.size() >= 4) {
-            QString displayText = QString("\"%1\" по адресу: %2 (%3)").arg(parts[1], parts[2], parts[3]);
+            QString displayText = QString("%1) \"%2\" по адресу: %3 (%4)")
+                                      .arg(parts[0], parts[1], parts[2], parts[3]);
             QListWidgetItem *item = new QListWidgetItem(displayText, ui->listWidget);
             item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
             item->setCheckState(Qt::Unchecked);
