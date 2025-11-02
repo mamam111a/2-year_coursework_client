@@ -3,8 +3,9 @@
 #include "globals.h"
 #include <QMessageBox>
 #include "sendInfo.h"
-
-
+#include <QRegularExpression>
+#include <QDate>
+using namespace std;
 FindItem::FindItem(MainWindow *mainWin)
     : QDialog(nullptr)
     , ui(new Ui::FindItem)
@@ -25,24 +26,27 @@ void FindItem::CheckState(QListWidgetItem *changedItem)
 
     ui->listWidget->blockSignals(true);
 
-    if (changedItem->text() == "В ЛЮБОМ МАГАЗИНЕ") {
-        if (changedItem->checkState() == Qt::Checked) {
-            for (int i = 0; i < ui->listWidget->count(); i++) {
-                QListWidgetItem *item = ui->listWidget->item(i);
-                if (item != changedItem) {
-                    item->setCheckState(Qt::Unchecked);
-                }
-            }
+    QListWidgetItem *anyShopItem = ui->listWidget->item(0);
+
+    if (changedItem == anyShopItem) {
+        anyShopItem->setCheckState(Qt::Checked);
+        for (int i = 1; i < ui->listWidget->count(); i++) {
+            ui->listWidget->item(i)->setCheckState(Qt::Unchecked);
         }
     } else {
-        QListWidgetItem *anyShopItem = ui->listWidget->item(0);
-        if (anyShopItem->checkState() == Qt::Checked) {
-            anyShopItem->setCheckState(Qt::Unchecked);
+        bool anySpecificChecked = false;
+        for (int i = 1; i < ui->listWidget->count(); i++) {
+            if (ui->listWidget->item(i)->checkState() == Qt::Checked) {
+                anySpecificChecked = true;
+                break;
+            }
         }
+        anyShopItem->setCheckState(anySpecificChecked ? Qt::Unchecked : Qt::Checked);
     }
 
     ui->listWidget->blockSignals(false);
 }
+
 void FindItem::AddShopsToListWidget(const QStringList &shops)
 {
     ui->listWidget->clear();
@@ -95,16 +99,42 @@ void FindItem::on_pushButton_2_clicked()
     QString name = ui->name->text();
     QString publisher = ui->publisher->text();
     QString publisher_year = ui->publisher_year->text();
+
     if (section.contains("|") || author.contains("|") || name.contains("|") ||
         publisher.contains("|") || publisher_year.contains("|")) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    if (section.isEmpty() && author.isEmpty() && name.isEmpty() &&
+
+    bool anySpecificShopChecked = false;
+    for (int i = 1; i < ui->listWidget->count(); i++) {
+        QListWidgetItem *item = ui->listWidget->item(i);
+        if (item->checkState() == Qt::Checked) {
+            anySpecificShopChecked = true;
+            break;
+        }
+    }
+
+    if (!anySpecificShopChecked) {
+        ui->listWidget->item(0)->setCheckState(Qt::Checked);
+    }
+
+    if (!ui->listWidget->item(0)->checkState() && section.isEmpty() && author.isEmpty() && name.isEmpty() &&
         publisher.isEmpty() && publisher_year.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение для поиска");
         return;
     }
+
+    if (!publisher_year.isEmpty()) {
+        bool ok;
+        int year = publisher_year.toInt(&ok);
+        int currentYear = QDate::currentDate().year();
+        if (!ok || year <= 0 || year > currentYear) {
+            QMessageBox::warning(this, "Ошибка", "Год издания должен быть положительным числом до текущего года");
+            return;
+        }
+    }
+
     QList<int> selectedInd;
     for (int i = 0; i < ui->listWidget->count(); i++) {
         QListWidgetItem *item = ui->listWidget->item(i);
@@ -117,8 +147,20 @@ void FindItem::on_pushButton_2_clicked()
     for (int x : selectedInd) {
         indString += QString::number(x) + ",";
     }
-    indString.chop(1);
-    QString message = section + "|" + author + "|" + name + "|" + publisher + "|" + publisher_year + "|" + indString;
+    if (!indString.isEmpty())
+        indString.chop(1);
+
+    int quantityOT = ui->spinBox->value();
+    int quantityDO = ui->spinBox_2->value();
+    int priceOT = ui->spinBox_3->value();
+    int priceDO = ui->spinBox_4->value();
+
+    QString quantityOTStr = QString::number(quantityOT);
+    QString quantityDOStr = QString::number(quantityDO);
+    QString priceOTStr = QString::number(priceOT);
+    QString priceDOStr = QString::number(priceDO);
+
+    QString message = section + "|" + author + "|" + name + "|" + publisher + "|" + publisher_year + "|" + indString +
+                      "|" + quantityOTStr + "|" + quantityDOStr + "|" + priceOTStr + "|" + priceDOStr;
     sendToServer(socketMain, message);
 }
-

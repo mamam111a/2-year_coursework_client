@@ -20,24 +20,29 @@ delete_shop::~delete_shop()
 
 void delete_shop::on_pushButton_2_clicked()
 {
-    QString name = ui->name_3->text();
-    QString adress = ui->adress_3->text();
-    QString workingtime = ui->workingtime_3->text();
-
-    if (name.contains('|') || adress.contains('|') || workingtime.contains('|')) {
+    QString name = ui->name->text();
+    QString adress = ui->adress->text();
+    QTime timeOT = ui->timeEdit->time();
+    QTime timeDO = ui->timeEdit_2->time();
+    QString timeStrA = timeOT.toString("HH:mm");
+    QString timeStrB = timeDO.toString("HH:mm");
+    if(timeStrA == timeStrB) {
+        QMessageBox::warning(this, "Ошибка", "Некорректный график работы магазина");
+        return;
+    }
+    if (name.contains('|') || adress.contains('|')) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    if (name.isEmpty() || adress.isEmpty() || workingtime.isEmpty()) {
+    if (name.isEmpty() || adress.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Заполните все поля для удаления");
         return;
     }
-    QString line = "deleteshops|" + name + "|" + adress + "|" + workingtime;
+    QString line = "deleteshops|" + name + "|" + adress + "|" + timeStrB + " - " + timeStrA;
     sendToServer(socketMain, line);
 
-    ui->name_3->clear();
-    ui->adress_3->clear();
-    ui->workingtime_3->clear();
+    ui->name->clear();
+    ui->adress->clear();
 
 }
 

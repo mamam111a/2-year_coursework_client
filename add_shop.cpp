@@ -23,27 +23,28 @@ void add_shop::on_pushButton_2_clicked()
 {
     QString name = ui->name->text();
     QString adress = ui->adress->text();
-    QString workingtime = ui->workingtime->text();
-
-    if (name.isEmpty() || adress.isEmpty() || workingtime.isEmpty()) {
+    QTime timeOT = ui->timeEdit->time();
+    QTime timeDO = ui->timeEdit_2->time();
+    QString timeStrA = timeOT.toString("HH:mm");
+    QString timeStrB = timeDO.toString("HH:mm");
+    if(timeStrA == timeStrB) {
+        QMessageBox::warning(this, "Ошибка", "Некорректный график работы магазина");
+        return;
+    }
+    if (name.isEmpty() || adress.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Все поля должны быть заполнены");
         return;
     }
-    if (name.contains('|') || adress.contains('|') || workingtime.contains('|')) {
+    if (name.contains('|') || adress.contains('|')) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    QRegularExpression timeRegex("^([01]\\d|2[0-3]):[0-5]\\d\\s-\\s([01]\\d|2[0-3]):[0-5]\\d$");
 
-    if (!timeRegex.match(workingtime).hasMatch()) {
-        QMessageBox::warning(this, "Ошибка", "Поле 'Время работы' должно быть в формате 00:00 - 00:00");
-        return;
-    }
-    QString line = "addshops|" + name + "|" + adress + "|" + workingtime;
+
+    QString line = "addshops|" + name + "|" + adress + "|" + timeStrB + " - " + timeStrA;
     sendToServer(socketMain, line);
     ui->name->clear();
     ui->adress->clear();
-    ui->workingtime->clear();
 }
 
 

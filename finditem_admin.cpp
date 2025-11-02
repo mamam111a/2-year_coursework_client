@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "globals.h"
 #include "sendInfo.h"
-
+#include <QDate>
 finditem_admin::finditem_admin(adminMenu* adminmenu)
     : QDialog(adminmenu)
     , ui(new Ui::finditem_admin)
@@ -56,6 +56,42 @@ void finditem_admin::on_pushButton_2_clicked()
         quantity.isEmpty() && price.isEmpty() && additional_info.isEmpty() && numShop.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение для поиска");
         return;
+    }
+    if (!publisher_year.isEmpty()) {
+        bool ok;
+        int year = publisher_year.toInt(&ok);
+        int currentYear = QDate::currentDate().year(); // текущий год
+        if (!ok || year <= 0 || year > currentYear) {
+            QMessageBox::warning(this, "Ошибка", "Год издания должен быть положительным числом до текущего года");
+            return;
+        }
+    }
+
+    if (!quantity.isEmpty()) {
+        bool ok;
+        int qty = quantity.toInt(&ok);
+        if (!ok || qty < 0) {
+            QMessageBox::warning(this, "Ошибка", "Количество должно быть положительным числом");
+            return;
+        }
+    }
+
+    if (!price.isEmpty()) {
+        bool ok;
+        double p = price.toInt(&ok);
+        if (!ok || p <= 0) {
+            QMessageBox::warning(this, "Ошибка", "Цена должна быть положительным числом");
+            return;
+        }
+    }
+
+    if (!numShop.isEmpty()) {
+        bool ok;
+        int shopNum = numShop.toInt(&ok);
+        if (!ok || shopNum <= 0) {
+            QMessageBox::warning(this, "Ошибка", "Номер магазина должен быть положительным числом");
+            return;
+        }
     }
 
     QString message = "findbooks|" + numShop + "|" + section + "|" + author + "|" + name + "|" + publisher + "|" +

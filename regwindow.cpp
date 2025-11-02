@@ -4,6 +4,7 @@
 #include "globals.h"
 #include "sendInfo.h"
 #include <QMessageBox>
+#include <QRegularExpression>
 RegWindow::RegWindow(MainWindow *parentWindow)
     : QDialog(parentWindow)
     , ui(new Ui::RegWindow)
@@ -35,7 +36,26 @@ void RegWindow::on_pushButton_clicked()
         QMessageBox::warning(this, "Ошибка", "Логин и пароль не могут быть пустыми!");
         return;
     }
+    if (login.length() < 8) {
+        QMessageBox::warning(this, "Ошибка", "Логин должен содержать не менее 8 символов.");
+        return;
+    }
+    QRegularExpression regex("^[a-zA-Z0-9]+$"); // только латинские буквы и цифры
+    QRegularExpressionMatch match = regex.match(login);
+    if (!match.hasMatch()) {
+        QMessageBox::warning(this, "Ошибка", "Логин может содержать только буквы и цифры.");
+        return;
+    }
+    QRegularExpression strongPass("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$");
 
+    if (!strongPass.match(password).hasMatch()) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Пароль должен содержать не менее 8 символов, включая:\n"
+                             "• Заглавную и строчную букву\n"
+                             "• Цифру\n"
+                             "• Специальный символ");
+        return;
+    }
     QString message = "2|" + login + "|" + password + "|" + code;
     sendToServer(socketMain, message);
     ui->login->clear();

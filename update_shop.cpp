@@ -38,21 +38,23 @@ void update_shop::on_pushButton_2_clicked()
 
     QString name = ui->name_2->text();
     QString address = ui->address_2->text();
-    QString workingtime = ui->workinghours_2->text();
     QString newValue = ui->newVal->text();
+    QTime timeOT = ui->timeEdit->time();
+    QTime timeDO = ui->timeEdit_2->time();
+    QString timeStrA = timeOT.toString("HH:mm");
+    QString timeStrB = timeDO.toString("HH:mm");
 
-    if (name.contains('|') || address.contains('|') || workingtime.contains('|')) {
+
+    if(timeStrA == timeStrB) {
+        QMessageBox::warning(this, "Ошибка", "Некорректный график работы магазина");
+        return;
+    }
+    if (name.contains('|') || address.contains('|') ) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    QRegularExpression timeRegex("^([01]\\d|2[0-3]):[0-5]\\d\\s-\\s([01]\\d|2[0-3]):[0-5]\\d$");
 
-    if (!workingtime.isEmpty() && !timeRegex.match(workingtime).hasMatch()) {
-        QMessageBox::warning(this, "Ошибка", "Поле 'Время работы' должно быть в формате 00:00 - 00:00");
-        return;
-    }
-
-    QString line =  "updateshops|" + name + "|" + address + "|" + workingtime + "|" + result + "|" + newValue;
+    QString line =  "updateshops|" + name + "|" + address + "|" + timeStrB + " - " + timeStrA + + "|" + result + "|" + newValue;
     sendToServer(socketMain, line);
 }
 
