@@ -6,6 +6,7 @@
 "sudo apt update && sudo apt install -y qtcreator"
 
 1) Запуск приложения
+   
 Откройте QT Creator, выполнив команду: 
 "qtcreator"
 
