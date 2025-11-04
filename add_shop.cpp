@@ -27,10 +27,7 @@ void add_shop::on_pushButton_2_clicked()
     QTime timeDO = ui->timeEdit_2->time();
     QString timeStrA = timeOT.toString("HH:mm");
     QString timeStrB = timeDO.toString("HH:mm");
-    if(timeStrA == timeStrB) {
-        QMessageBox::warning(this, "Ошибка", "Некорректный график работы магазина");
-        return;
-    }
+
     if (name.isEmpty() || adress.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Все поля должны быть заполнены");
         return;

@@ -4,6 +4,7 @@
 #include <string>
 #include "globals.h"
 #include "sendInfo.h"
+#include <QDate>
 using namespace std;
 add_item::add_item(adminMenu* adminmenu)
     : QDialog(adminmenu)
@@ -70,6 +71,16 @@ void add_item::on_pushButton_2_clicked()
         if (year <= 0 || priceValue <= 0 || quantityValue <= 0 || shopNmbValue <= 0) {
             QMessageBox::warning(this, "Ошибка", "Числовые значения должны быть положительными");
             return;
+        }
+
+        if (!publisher_year.isEmpty()) {
+            bool ok;
+            int year = publisher_year.toInt(&ok);
+            int currentYear = QDate::currentDate().year();
+            if (!ok || year <= 0 || year > currentYear) {
+                QMessageBox::warning(this, "Ошибка", "Год издания должен быть положительным числом до текущего года включительно");
+                return;
+            }
         }
 
 

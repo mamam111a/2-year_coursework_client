@@ -45,16 +45,36 @@ void update_shop::on_pushButton_2_clicked()
     QString timeStrB = timeDO.toString("HH:mm");
 
 
-    if(timeStrA == timeStrB) {
-        QMessageBox::warning(this, "Ошибка", "Некорректный график работы магазина");
+    if(newValue.isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Введите новое значение");
         return;
     }
     if (name.contains('|') || address.contains('|') ) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
+    if (result == "working_hours") {
+        QRegularExpression re("^([01]\\d|2[0-3]):([0-5]\\d)\\s-\\s([01]\\d|2[0-3]):([0-5]\\d)$");
+        QRegularExpressionMatch match = re.match(newValue);
+        if (!match.hasMatch()) {
+            QMessageBox::warning(this, "Ошибка", "Неверный формат времени. Используйте HH:mm - HH:mm (обязательные пробелы)");
+            return;
+        }
+    }
+    bool includeWorkingHours = ui->checkBox->isChecked();
+    QString line;
+    if(includeWorkingHours) {
+        line =  "updateshops|" + name + "|" + address + "|" + timeStrB + " - " + timeStrA + + "|" + result + "|" + newValue;
+    }
+    else{
+        if (name.isEmpty() && address.isEmpty()) {
+            QMessageBox::warning(this, "Ошибка", "Заполните хотя бы одно поле");
+            return;
+        }
+        line =  "updateshops|" + name + "|" + address + "|" + "|" + result + "|" + newValue;
 
-    QString line =  "updateshops|" + name + "|" + address + "|" + timeStrB + " - " + timeStrA + + "|" + result + "|" + newValue;
+    }
+
     sendToServer(socketMain, line);
 }
 

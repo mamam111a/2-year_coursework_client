@@ -5,6 +5,7 @@
 #include "globals.h"
 #include "sendInfo.h"
 #include <QRegularExpression>
+#include <QDate>
 using namespace std;
 update_item::update_item(adminMenu* adminmenu)
     : QDialog(adminmenu)
@@ -86,7 +87,7 @@ void update_item::on_pushButton_2_clicked()
 
     if (section.isEmpty() && author.isEmpty() && title.isEmpty() &&
         publisher.isEmpty() && publisher_year.isEmpty() &&
-        price.isEmpty() && quantity.isEmpty() && shopnumber.isEmpty())
+        price.isEmpty() && quantity.isEmpty() && shopnumber.isEmpty() && additionalinfo.isEmpty())
     {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение");
         return;
@@ -126,6 +127,59 @@ void update_item::on_pushButton_2_clicked()
         return;
     } catch (const out_of_range&) {
         QMessageBox::warning(this, "Ошибка", "Введено слишком большое число");
+        return;
+    }
+
+
+    if (!publisher_year.isEmpty()) {
+        bool ok;
+        int year = publisher_year.toInt(&ok);
+        int currentYear = QDate::currentDate().year();
+
+        if (!ok) {
+            QMessageBox::warning(this, "Ошибка", "Год издания должен быть числом");
+            return;
+        }
+
+        if (year <= 0 || year > currentYear) {
+            QMessageBox::warning(this, "Ошибка", QString("Год издания должен быть положительным числом до текущего года включительно").arg(currentYear));
+            return;
+        }
+    }
+
+    if (newValue.isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Введите новое значение для обновления");
+        return;
+    }
+
+    if (result == "publishing_year") {
+        bool ok;
+        int year = newValue.toInt(&ok);
+        int currentYear = QDate::currentDate().year();
+        if (!ok) {
+            QMessageBox::warning(this, "Ошибка", "Год издания должен быть числом");
+            return;
+        }
+        if (year <= 0 || year > currentYear) {
+            QMessageBox::warning(this, "Ошибка", QString("Год издания должен быть положительным числом до текущего года включительно").arg(currentYear));
+            return;
+        }
+    }
+    else if (result == "quantity" || result == "price" || result == "shop_id") {
+        bool ok;
+        int value = newValue.toInt(&ok);
+        if (!ok) {
+            QMessageBox::warning(this, "Ошибка", "Новое значение должно быть числом");
+            return;
+        }
+        if (value <= 0) {
+            QMessageBox::warning(this, "Ошибка", "Числовое значение должно быть положительным");
+            return;
+        }
+    }
+
+    if (newValue.contains('|')) {
+        QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
 

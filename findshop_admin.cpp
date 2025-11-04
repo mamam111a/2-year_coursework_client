@@ -41,19 +41,25 @@ void findshop_admin::on_pushButton_2_clicked()
     QTime timeDO = ui->timeEdit_2->time();
     QString timeStrA = timeOT.toString("HH:mm");
     QString timeStrB = timeDO.toString("HH:mm");
-    if(timeStrA == timeStrB) {
-        QMessageBox::warning(this, "Ошибка", "Некорректный график работы магазина");
-        return;
-    }
+
     if (name.contains('|') || adress.contains('|')) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    if (name.isEmpty() && adress.isEmpty() && timeStrA == "00:00" && timeStrB == "00:00") {
-        QMessageBox::warning(this, "Ошибка", "Заполните хотя бы одно поле");
-        return;
+
+    bool includeWorkingHours = ui->checkBox->isChecked();
+    QString line;
+    if(includeWorkingHours) {
+        line = "findshops|" + name + "|" + adress + "|" + timeStrB + " - " + timeStrA;
     }
-    QString line = "findshops|" + name + "|" + adress + "|" + timeStrB + " - " + timeStrA;
+    else{
+        if (name.isEmpty() && adress.isEmpty()) {
+            QMessageBox::warning(this, "Ошибка", "Заполните хотя бы одно поле");
+            return;
+        }
+        line = "findshops|" + name + "|" + adress + "|";
+    }
+
     sendToServer(socketMain, line);
 
     ui->name->clear();

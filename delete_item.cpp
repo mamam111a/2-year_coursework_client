@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "globals.h"
 #include "sendInfo.h"
-
+#include <QDate>
 using namespace std;
 delete_item::delete_item(adminMenu* adminmenu)
     : QDialog(adminmenu)
@@ -44,6 +44,7 @@ void delete_item::on_pushButton_2_clicked()
     QString quantity = ui->quantity->text();
     QString numberShop = ui->numbershop->text();
 
+    // Проверка недопустимого символа '|'
     if (section.contains('|') || author.contains('|') || title.contains('|') ||
         publisher.contains('|') || publisher_year.contains('|') ||
         price.contains('|') || additionalinfo.contains('|') || quantity.contains('|') || numberShop.contains('|'))
@@ -51,36 +52,40 @@ void delete_item::on_pushButton_2_clicked()
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    int year = 0, priceValue = 0, quantityValue = 0, shopNmbValue = 0;
 
+    int year = 0, priceValue = 0, quantityValue = 0, shopNmbValue = 0;
     try {
         if (!publisher_year.isEmpty())
-            year = stoi(publisher_year.toStdString());
+            year = publisher_year.toInt();
 
         if (!price.isEmpty())
-            priceValue = stoi(price.toStdString());
+            priceValue = price.toInt();
 
         if (!quantity.isEmpty())
-            quantityValue = stoi(quantity.toStdString());
+            quantityValue = quantity.toInt();
 
         if (!numberShop.isEmpty())
-            shopNmbValue = stoi(numberShop.toStdString());
-        if ((year != 0 && year <= 0) ||
-            (priceValue != 0 && priceValue <= 0) ||
-            (quantityValue != 0 && quantityValue <= 0) ||
-            (shopNmbValue != 0 && shopNmbValue <= 0))
-        {
-            QMessageBox::warning(this, "Ошибка", "Числовые значения должны быть положительными");
-            return;
-        }
+            shopNmbValue = numberShop.toInt();
 
-    } catch (const invalid_argument&) {
+    } catch (...) {
         QMessageBox::warning(this, "Ошибка", "Поля числовых значений должны содержать только числа");
         return;
-    } catch (const out_of_range&) {
-        QMessageBox::warning(this, "Ошибка", "Введено слишком большое число");
+    }
+
+    if ((!publisher_year.isEmpty() && year <= 0) ||
+      (!price.isEmpty() && priceValue <= 0) ||
+      (!quantity.isEmpty() && quantityValue <= 0) ||
+      (!numberShop.isEmpty() && shopNmbValue <= 0))
+    {
+        QMessageBox::warning(this, "Ошибка", "Числовые значения должны быть положительными");
         return;
     }
+
+    if (!publisher_year.isEmpty() && (year > QDate::currentDate().year() || year <= 0)) {
+        QMessageBox::warning(this, "Ошибка", "Год издания должен быть положительным числом до текущего года включительно");
+        return;
+    }
+
     if (section.isEmpty() || author.isEmpty() || title.isEmpty() ||
         publisher.isEmpty() || publisher_year.isEmpty() ||
         price.isEmpty() || additionalinfo.isEmpty() || quantity.isEmpty() || numberShop.isEmpty())
@@ -88,7 +93,9 @@ void delete_item::on_pushButton_2_clicked()
         QMessageBox::warning(this, "Ошибка", "Заполните все поля для удаления");
         return;
     }
-    QString line =  "deletebooks|" + numberShop + "|" + section + "|" + author + "|" + title + "|" + publisher  + "|" + publisher_year + "|" + quantity + "|" + price + "|" + additionalinfo;
+
+    QString line = "deletebooks|" + numberShop + "|" + section + "|" + author + "|" + title + "|" +
+                   publisher + "|" + publisher_year + "|" + quantity + "|" + price + "|" + additionalinfo;
     sendToServer(socketMain, line);
 
     ui->section->clear();
@@ -100,5 +107,4 @@ void delete_item::on_pushButton_2_clicked()
     ui->additionalinfo->clear();
     ui->quantity->clear();
     ui->numbershop->clear();
-
 }

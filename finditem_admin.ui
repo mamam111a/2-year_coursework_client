@@ -49,9 +49,9 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>100</y>
+     <y>110</y>
      <width>691</width>
-     <height>371</height>
+     <height>341</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -64,7 +64,7 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>60</y>
+      <y>30</y>
       <width>651</width>
       <height>284</height>
      </rect>

@@ -119,7 +119,7 @@ void FindItem::on_pushButton_2_clicked()
         ui->listWidget->item(0)->setCheckState(Qt::Checked);
     }
 
-    if (!ui->listWidget->item(0)->checkState() && section.isEmpty() && author.isEmpty() && name.isEmpty() &&
+    if (section.isEmpty() && author.isEmpty() && name.isEmpty() &&
         publisher.isEmpty() && publisher_year.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение для поиска");
         return;
