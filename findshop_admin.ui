@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #F5F2E7;
+    color: black;</string>
+  </property>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
@@ -253,7 +257,6 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
    <zorder>frame_3</zorder>
    <zorder>frame</zorder>
    <zorder>adress</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>checkBox</zorder>
   </widget>
   <zorder>label</zorder>

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "adminmenu.h"
+#include "user_menu.h"
 namespace Ui {
 class findshop_admin;
 }
@@ -12,7 +13,7 @@ class findshop_admin : public QDialog
     Q_OBJECT
 
 public:
-    explicit findshop_admin(adminMenu* adminmenu);
+    explicit findshop_admin(adminMenu* adminmenu, user_menu *usermenu);
     ~findshop_admin();
 
 private slots:
@@ -23,6 +24,7 @@ private slots:
 private:
     Ui::findshop_admin *ui;
     adminMenu* adminmenu;
+    user_menu *usermenu;
 };
 
 #endif // FINDSHOP_ADMIN_H

@@ -60,19 +60,22 @@
       <widget class="QPushButton" name="readbooks">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: #2196F3; 
-    color: black;          
+    background-color: #1565C0;  /* Более тёмный синий */
+    color: white;                
     border: none;        
     border-radius: 6px;
     padding: 6px 12px;
     font-weight: normal;
 }
+
 QPushButton:hover {
-    background-color: #1976D2;
+    background-color: #0D47A1;  /* Ещё темнее при наведении */
 }
+
 QPushButton:pressed {
-    background-color: #0D47A1;
-}</string>
+    background-color: #0B3D91;  /* Самый тёмный при нажатии */
+}
+</string>
        </property>
        <property name="text">
         <string>Просмотреть произведения</string>
@@ -83,19 +86,22 @@ QPushButton:pressed {
       <widget class="QPushButton" name="readshops">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: #2196F3; 
-    color: black;          
+    background-color: #1565C0;  /* Более тёмный синий */
+    color: white;                
     border: none;        
     border-radius: 6px;
     padding: 6px 12px;
     font-weight: normal;
 }
+
 QPushButton:hover {
-    background-color: #1976D2;
+    background-color: #0D47A1;  /* Ещё темнее при наведении */
 }
+
 QPushButton:pressed {
-    background-color: #0D47A1;
-}</string>
+    background-color: #0B3D91;  /* Самый тёмный при нажатии */
+}
+</string>
        </property>
        <property name="text">
         <string>Просмотреть магазины</string>
@@ -118,19 +124,22 @@ QPushButton:pressed {
       <widget class="QPushButton" name="deletebooks">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: #FF7F7F; /* мягкий красный */
-    color: black;          
+    background-color: #FF4D4D;  /* яркий, но мягкий красный */
+    color: black;               /* белый текст для контраста */
     border: none;        
     border-radius: 6px;
     padding: 6px 12px;
     font-weight: normal;
 }
+
 QPushButton:hover {
-    background-color: #E06666; /* чуть темнее при наведении */
+    background-color: #E63939;  /* темнее при наведении */
 }
+
 QPushButton:pressed {
-    background-color: #C05050; /* ещё темнее при нажатии */
-}</string>
+    background-color: #C62828;  /* ещё темнее при нажатии */
+}
+</string>
        </property>
        <property name="text">
         <string>Удалить произведение</string>
@@ -141,19 +150,22 @@ QPushButton:pressed {
       <widget class="QPushButton" name="deleteshops">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: #FF7F7F; /* мягкий красный */
-    color: black;          
+    background-color: #FF4D4D;  /* яркий, но мягкий красный */
+    color: black;               /* белый текст для контраста */
     border: none;        
     border-radius: 6px;
     padding: 6px 12px;
     font-weight: normal;
 }
+
 QPushButton:hover {
-    background-color: #E06666; /* чуть темнее при наведении */
+    background-color: #E63939;  /* темнее при наведении */
 }
+
 QPushButton:pressed {
-    background-color: #C05050; /* ещё темнее при нажатии */
-}</string>
+    background-color: #C62828;  /* ещё темнее при нажатии */
+}
+</string>
        </property>
        <property name="text">
         <string>Удалить магазин</string>
@@ -234,19 +246,22 @@ QPushButton:pressed {
       <widget class="QPushButton" name="updatebooks">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: #FF9500; 
-    color: black;          
-    border: none;        
+    background-color: #9B30FF;  /* Яркий фиолетовый */
+    color: white;               /* Белый текст для контраста */
+    border: none;
     border-radius: 6px;
     padding: 6px 12px;
     font-weight: normal;
 }
+
 QPushButton:hover {
-    background-color: #D87A00;
+    background-color: #7A1EFF;  /* Темнее при наведении */
 }
+
 QPushButton:pressed {
-    background-color: #B56200;
-}</string>
+    background-color: #5F00CC;  /* Ещё темнее при нажатии */
+}
+</string>
        </property>
        <property name="text">
         <string>Изменить произведение</string>
@@ -257,19 +272,22 @@ QPushButton:pressed {
       <widget class="QPushButton" name="updateshops">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: #FF9500; 
-    color: black;          
-    border: none;        
+    background-color: #9B30FF;  /* Яркий фиолетовый */
+    color: white;               /* Белый текст для контраста */
+    border: none;
     border-radius: 6px;
     padding: 6px 12px;
     font-weight: normal;
 }
+
 QPushButton:hover {
-    background-color: #D87A00;
+    background-color: #7A1EFF;  /* Темнее при наведении */
 }
+
 QPushButton:pressed {
-    background-color: #B56200;
-}</string>
+    background-color: #5F00CC;  /* Ещё темнее при нажатии */
+}
+</string>
        </property>
        <property name="text">
         <string>Изменить магазин</string>

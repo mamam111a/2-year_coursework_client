@@ -3,7 +3,7 @@
 #include "globals.h"
 #include "sendInfo.h"
 #include <QMessageBox>
-#include "finditem_user.h"
+#include "user_menu.h"
 #include "adminmenu.h"
 loginwindow::loginwindow(QWidget *parent)
     : QDialog(parent)
@@ -45,13 +45,12 @@ void loginwindow::CheckServerAuth(const QString &message)
     if (message.contains("Вы подключились")) {
         MainWindow *mainWin = qobject_cast<MainWindow*>(parentWidget());
         if(message.contains("user")) {
-            FindItem *findWin = new FindItem(mainWin);
-            findWin->setAttribute(Qt::WA_DeleteOnClose);
-            findWin->setGeometry(mainWin->geometry());
-            findWin->show();
+            user_menu *usermenu = new user_menu(mainWin);
+            usermenu->setAttribute(Qt::WA_DeleteOnClose);
+            usermenu->setGeometry(mainWin->geometry());
+            usermenu->show();
             this->close();
             mainWin->hide();
-
         }
         else if(message.contains("admin")) {
             adminMenu *adminmenu = new adminMenu(mainWin);

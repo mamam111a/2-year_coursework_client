@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>user_menu</class>
+ <widget class="QDialog" name="user_menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #F5F2E7;
+    color: black;</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>50</y>
+     <width>801</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;🤔 &lt;/span&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Выбор поиска &lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;🤔 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>200</y>
+     <width>371</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+    background-color: #01EB00; /* Очень ярко-зелёный */
+    color: black;              /* Черный текст */
+	border: none;              /* Без обводки */
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+
+QPushButton:hover {
+    background-color: #01C700; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #019900; /* Ещё темнее при нажатии */
+}</string>
+    </property>
+    <property name="text">
+     <string>Найти книжное издание</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>120</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #9B30FF; /* Яркий неоновый фиолетовый */
+    color: white;              /* Белый текст для контраста */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: normal;
+}
+
+QPushButton:hover {
+    background-color: #7A1EFF; /* Более насыщенный при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #5F00CC; /* Темнее при нажатии */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Найти магазин</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>520</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #F5F2E7; /* Ярко-красный */
+    color: black;              /* Черный текст */
+ 
+}
+
+QPushButton:hover {
+    background-color: #D32F2F; /* Темнее при наведении */
+}
+
+QPushButton:pressed {
+    background-color: #B71C1C; /* Ещё темнее при нажатии */
+}</string>
+   </property>
+   <property name="text">
+    <string>Вернуться назад</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

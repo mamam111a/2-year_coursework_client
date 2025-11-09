@@ -5,16 +5,18 @@
 #include "sendInfo.h"
 #include <QRegularExpression>
 #include <QDate>
+#include "mainwindow.h"
 using namespace std;
-FindItem::FindItem(MainWindow *mainWin)
-    : QDialog(nullptr)
+FindItem::FindItem(user_menu* usermenu)
+    : QDialog(usermenu)
     , ui(new Ui::FindItem)
-    , mainWindow(mainWin)
+    , usermenu(usermenu)
 {
     this->setFixedSize(800, 600);
     ui->setupUi(this);
 
-    if(mainWindow) {
+    if(usermenu) {
+        mainWindow = usermenu->mainWindow;
         connect(mainWindow, &MainWindow::DataServerShop, this, &FindItem::AddShopsToListWidget);
         this->setGeometry(mainWindow->frameGeometry());
         mainWindow->hide();
@@ -78,18 +80,14 @@ FindItem::~FindItem()
 
 void FindItem::on_pushButton_clicked()
 {
-    QString message = "0|logout";
-    sendToServer(socketMain, message);
     this->close();
     QSize findSize = this->size();
     QPoint findPos = this->pos();
-    QSize mainSize = mainWindow->size();
+    QSize mainSize = usermenu->size();
     int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
     int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
-    if (mainWindow) {
-        mainWindow->show();
-    }
-    mainWindow->move(x, y);
+    usermenu->move(x, y);
+    usermenu->show();
 
 }
 void FindItem::on_pushButton_2_clicked()

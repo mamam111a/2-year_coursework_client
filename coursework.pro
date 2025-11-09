@@ -24,7 +24,8 @@ SOURCES += \
     mainwindow.cpp \
     regwindow.cpp \
     update_item.cpp \
-    update_shop.cpp
+    update_shop.cpp \
+    user_menu.cpp
 
 HEADERS += \
     add_item.h \
@@ -43,7 +44,8 @@ HEADERS += \
     regwindow.h \
     sendInfo.h \
     update_item.h \
-    update_shop.h
+    update_shop.h \
+    user_menu.h
 
 FORMS += \
     add_item.ui \
@@ -59,7 +61,8 @@ FORMS += \
     mainwindow.ui \
     regwindow.ui \
     update_item.ui \
-    update_shop.ui
+    update_shop.ui \
+    user_menu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

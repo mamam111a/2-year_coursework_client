@@ -97,8 +97,9 @@ void MainWindow::ReadReply()
             if (message[0] == '!') {
                 emit ServerMessage(message);
             } else if (message[0] == '*') {
-                QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
-                emit DataServerShop(shopList);
+                QStringList shops = message.mid(1).split('\n', Qt::SkipEmptyParts);
+                shopsList = shops;
+                emit DataServerShop(shops);
             } else if (message[0] == '#'){
                 QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
                 OpenFindItemResult(message);

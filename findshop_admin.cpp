@@ -3,10 +3,11 @@
 #include <QMessageBox>
 #include "sendInfo.h"
 #include "globals.h"
-findshop_admin::findshop_admin(adminMenu* adminmenu)
+findshop_admin::findshop_admin(adminMenu* adminmenu, user_menu *usermenu)
     : QDialog(adminmenu)
     , ui(new Ui::findshop_admin)
     , adminmenu(adminmenu)
+    , usermenu(usermenu)
 {
     ui->setupUi(this);
     this->setFixedSize(800, 600);
@@ -23,13 +24,26 @@ void findshop_admin::on_pushButton_clicked()
     this->close();
     QSize findSize = this->size();
     QPoint findPos = this->pos();
-    QSize mainSize = adminmenu->size();
-    int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
-    int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
-    if (adminmenu) {
-        adminmenu->show();
+    if(usermenu == nullptr) {
+        QSize mainSize = adminmenu->size();
+        int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
+        int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
+        if (adminmenu) {
+            adminmenu->show();
+        }
+        adminmenu->move(x, y);
     }
-    adminmenu->move(x, y);
+    else{
+        QSize mainSize = usermenu->size();
+        int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
+        int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
+        if (usermenu) {
+            usermenu->show();
+        }
+        usermenu->move(x, y);
+    }
+
+
 }
 
 

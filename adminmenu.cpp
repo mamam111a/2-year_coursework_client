@@ -123,7 +123,7 @@ void adminMenu::on_readbooks_clicked()
 void adminMenu::on_readshops_clicked()
 {
     this->hide();
-    findshop_admin findshopadmin(this);
+    findshop_admin findshopadmin(this, nullptr);
     findshopadmin.setModal(true);
     findshopadmin.setGeometry(this->geometry());
     findshopadmin.exec();
