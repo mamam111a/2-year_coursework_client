@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>490</y>
+     <y>510</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -80,9 +80,9 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>110</y>
-     <width>671</width>
-     <height>361</height>
+     <y>100</y>
+     <width>661</width>
+     <height>391</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -91,26 +91,13 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
    <property name="title">
     <string/>
    </property>
-   <widget class="QLineEdit" name="adress">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>160</y>
-      <width>481</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Введите адрес магазина</string>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>631</width>
-      <height>91</height>
+      <y>50</y>
+      <width>621</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -119,25 +106,12 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>200</width>
-       <height>26</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Название магазина :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="name">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>30</y>
-       <width>391</width>
+       <x>140</x>
+       <y>20</y>
+       <width>471</width>
        <height>26</height>
       </rect>
      </property>
@@ -145,47 +119,18 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
       <string>Введите название магазина</string>
      </property>
     </widget>
-    <widget class="QFrame" name="frame_2">
+    <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>631</width>
-       <height>91</height>
+       <x>20</x>
+       <y>20</y>
+       <width>105</width>
+       <height>26</height>
       </rect>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Название :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>111</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Название :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="name_2">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>30</y>
-        <width>481</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>Введите название магазина</string>
-      </property>
-     </widget>
     </widget>
    </widget>
    <widget class="QFrame" name="frame_3">
@@ -193,37 +138,8 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
      <rect>
       <x>20</x>
       <y>130</y>
-      <width>631</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>71</width>
-       <height>26</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Адрес :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="frame_4">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>240</y>
-      <width>631</width>
-      <height>91</height>
+      <width>621</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -236,8 +152,8 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>30</y>
-       <width>151</width>
+       <y>10</y>
+       <width>145</width>
        <height>26</height>
       </rect>
      </property>
@@ -249,8 +165,8 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>30</y>
-       <width>241</width>
+       <y>10</y>
+       <width>326</width>
        <height>28</height>
       </rect>
      </property>
@@ -278,11 +194,131 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
      </layout>
     </widget>
    </widget>
-   <zorder>frame_4</zorder>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>641</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Адрес магазина&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>631</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Информация о магазине&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>230</y>
+      <width>621</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>105</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Город :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="city">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>451</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Введите город, где находится магазин</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="street">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>60</y>
+       <width>451</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Введите улицу, на которой находится магазин</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="numberHouse">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>100</y>
+       <width>451</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Введите номер дома, в котором находится магазин</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>105</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Улица :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>131</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Номер дома :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>frame_3</zorder>
    <zorder>frame</zorder>
-   <zorder>adress</zorder>
-   <zorder>layoutWidget</zorder>
+   <zorder>label_9</zorder>
+   <zorder>label_10</zorder>
+   <zorder>frame_2</zorder>
   </widget>
  </widget>
  <resources/>

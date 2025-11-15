@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1221</width>
-    <height>625</height>
+    <width>1406</width>
+    <height>812</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,21 +21,21 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>0</x>
      <y>10</y>
-     <width>741</width>
+     <width>1401</width>
      <height>61</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;✨🎯📄&lt;/span&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Вот, что удалось найти по запросу &lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;📄🎯✨&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;✨🎯📄&lt;/span&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Вот, что удалось найти по запросу &lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;📄🎯✨&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>580</y>
+     <x>620</x>
+     <y>770</y>
      <width>161</width>
      <height>26</height>
     </rect>
@@ -54,8 +54,8 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
     <rect>
      <x>20</x>
      <y>130</y>
-     <width>1181</width>
-     <height>431</height>
+     <width>1371</width>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -68,7 +68,7 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>280</x>
      <y>80</y>
      <width>701</width>
      <height>41</height>
@@ -81,7 +81,7 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
   <widget class="QPushButton" name="copyButton">
    <property name="geometry">
     <rect>
-     <x>920</x>
+     <x>990</x>
      <y>90</y>
      <width>121</width>
      <height>21</height>

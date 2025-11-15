@@ -21,26 +21,37 @@ delete_shop::~delete_shop()
 void delete_shop::on_pushButton_2_clicked()
 {
     QString name = ui->name->text();
-    QString adress = ui->adress->text();
+    QString city = ui->city->text();
+    QString street = ui->street->text();
+    QString numberHouse = ui->numberHouse->text();
     QTime timeOT = ui->timeEdit->time();
     QTime timeDO = ui->timeEdit_2->time();
     QString timeStrA = timeOT.toString("HH:mm");
     QString timeStrB = timeDO.toString("HH:mm");
+    QRegularExpression re("^[0-9]+[A-Za-zА-Яа-я]?(?:/[0-9]+[A-Za-zА-Яа-я]?)?$");
 
-    if (name.contains('|') || adress.contains('|')) {
+    if (!re.match(numberHouse).hasMatch() && numberHouse.isEmpty() == false) {
+        QMessageBox::warning(this, "Ошибка", "Введите корректный номер дома");
+        return;
+    }
+    if (name.isEmpty() || city.isEmpty() || street.isEmpty() || numberHouse.isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Все поля должны быть заполнены");
+        return;
+    }
+    if (name.contains('|') || city.contains('|') || street.contains('|') || numberHouse.contains('|') ) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
-    if (name.isEmpty() || adress.isEmpty()) {
-        QMessageBox::warning(this, "Ошибка", "Заполните все поля для удаления");
-        return;
-    }
-    QString line = "deleteshops|" + name + "|" + adress + "|" + timeStrB + " - " + timeStrA;
+
+
+    QString line = "deleteshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|" + timeStrB + " - " + timeStrA;
     sendToServer(socketMain, line);
-
     ui->name->clear();
-    ui->adress->clear();
-
+    ui->city->clear();
+    ui->street->clear();
+    ui->numberHouse->clear();
+    ui->timeEdit->setTime(QTime(0, 0));
+    ui->timeEdit_2->setTime(QTime(0, 0));
 }
 
 

@@ -50,13 +50,20 @@ void findshop_admin::on_pushButton_clicked()
 void findshop_admin::on_pushButton_2_clicked()
 {
     QString name = ui->name->text();
-    QString adress = ui->adress->text();
+    QString city = ui->city->text();
+    QString street = ui->street->text();
+    QString numberHouse = ui->numberHouse->text();
     QTime timeOT = ui->timeEdit->time();
     QTime timeDO = ui->timeEdit_2->time();
     QString timeStrA = timeOT.toString("HH:mm");
     QString timeStrB = timeDO.toString("HH:mm");
+    QRegularExpression re("^[0-9]+[A-Za-zА-Яа-я]?(?:/[0-9]+[A-Za-zА-Яа-я]?)?$");
 
-    if (name.contains('|') || adress.contains('|')) {
+    if (!re.match(numberHouse).hasMatch() && numberHouse.isEmpty() == false) {
+        QMessageBox::warning(this, "Ошибка", "Введите корректный номер дома");
+        return;
+    }
+    if (name.contains('|') || city.contains('|') || street.contains('|') || numberHouse.contains('|') ) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
@@ -64,19 +71,23 @@ void findshop_admin::on_pushButton_2_clicked()
     bool includeWorkingHours = ui->checkBox->isChecked();
     QString line;
     if(includeWorkingHours) {
-        line = "findshops|" + name + "|" + adress + "|" + timeStrB + " - " + timeStrA;
+        line = "findshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|" + timeStrB + " - " + timeStrA;
     }
     else{
-        if (name.isEmpty() && adress.isEmpty()) {
+        if (name.isEmpty() && city.isEmpty() && street.isEmpty() && numberHouse.isEmpty()) {
             QMessageBox::warning(this, "Ошибка", "Заполните хотя бы одно поле");
             return;
         }
-        line = "findshops|" + name + "|" + adress + "|";
+        line = "findshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|";
     }
 
     sendToServer(socketMain, line);
 
     ui->name->clear();
-    ui->adress->clear();
+    ui->city->clear();
+    ui->street->clear();
+    ui->numberHouse->clear();
+    ui->timeEdit->setTime(QTime(0, 0));
+    ui->timeEdit_2->setTime(QTime(0, 0));
 }
 

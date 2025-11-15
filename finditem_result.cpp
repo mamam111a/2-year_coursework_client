@@ -9,8 +9,6 @@ finditem_result::finditem_result(MainWindow *mainWin, QWidget *parent)
     , ui(new Ui::finditem_result)
     , mainWindow(mainWin)
 {
-    this->setFixedSize(1221, 625);
-
 
     ui->setupUi(this);
     connect(ui->copyButton, &QPushButton::clicked, this, &finditem_result::CopySelectedCells);
@@ -29,10 +27,10 @@ void finditem_result::CopySelectedCells()
     int lastRow = -1;
     for (QTableWidgetItem* item : selectedItems) {
         if (item->row() != lastRow) {
-            if (!copiedText.isEmpty()) copiedText += "\n"; // новая строка
+            if (!copiedText.isEmpty()) copiedText += "\n";
             lastRow = item->row();
         } else {
-            copiedText += "\t"; // табуляция между колонками
+            copiedText += "\t";
         }
         copiedText += item->text();
     }
@@ -54,27 +52,33 @@ void finditem_result::ShowSearchResultsBooks(const QString &message)
     }
 
     table->clear();
-    table->setColumnCount(9);
+    table->setColumnCount(11);
     table->setHorizontalHeaderLabels({
-        "Магазин", "Жанр", "Автор", "Название",
+        "Название магазина", "Адрес", "Время работы", "Жанр", "Автор", "Название",
         "Издательство", "Год", "Количество","Цена", "Доп. информация"
     });
     table->setRowCount(rows.size());
 
     for (int rowNum = 0; rowNum < rows.size(); rowNum++) {
-        QStringList cols = rows[rowNum].split(";", Qt::SkipEmptyParts);
-        for (int col = 1; col < cols.size() && col <= table->columnCount(); col++) {
+        QStringList cols = rows[rowNum].split(";", Qt::KeepEmptyParts);
+        for (int col = 0; col < cols.size() && col < table->columnCount(); col++) {
             QTableWidgetItem *item = new QTableWidgetItem(cols[col].trimmed());
-            item->setTextAlignment(Qt::AlignCenter);
+
+            item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
             item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-            item->setData(Qt::TextAlignmentRole, Qt::AlignCenter);
-            table->setItem(rowNum, col - 1, item);
+            if (col < 3) {
+                item->setBackground(QBrush(QColor(220, 230, 250)));
+            } else {
+                item->setBackground(QBrush(QColor(220, 250, 220)));
+            }
+
+            table->setItem(rowNum, col, item);
         }
     }
 
-    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    table->setWordWrap(true);
+    table->resizeColumnsToContents();
     table->resizeRowsToContents();
+    table->setWordWrap(true);
     table->updateGeometry();
     table->viewport()->update();
 }
@@ -94,9 +98,9 @@ void finditem_result::ShowSearchResultsShops(const QString &message) {
     }
 
     table->clear();
-    table->setColumnCount(3);
+    table->setColumnCount(5);
     table->setHorizontalHeaderLabels({
-        "Название", "Адрес", "Время работы"
+        "Название", "Город", "Улица","Номер здания", "Время работы"
     });
     table->setRowCount(rows.size());
 
@@ -104,7 +108,7 @@ void finditem_result::ShowSearchResultsShops(const QString &message) {
         QStringList cols = rows[rowNum].split(";", Qt::SkipEmptyParts);
         for (int col = 1; col < cols.size() && col <= table->columnCount(); col++) {
             QTableWidgetItem *item = new QTableWidgetItem(cols[col].trimmed());
-            item->setTextAlignment(Qt::AlignCenter);
+             item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
             item->setFlags(item->flags() & ~Qt::ItemIsEditable);
             item->setData(Qt::TextAlignmentRole, Qt::AlignCenter);
             table->setItem(rowNum, col - 1, item);

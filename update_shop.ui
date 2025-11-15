@@ -19,7 +19,7 @@
      <x>30</x>
      <y>60</y>
      <width>741</width>
-     <height>421</height>
+     <height>451</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -28,39 +28,13 @@
    <property name="title">
     <string/>
    </property>
-   <widget class="QLineEdit" name="newVal">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>370</y>
-      <width>511</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Введите новое значение, которое заменит значение выбранного параметра</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>370</y>
-      <width>181</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Новое значение :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
+      <y>10</y>
       <width>701</width>
-      <height>221</height>
+      <height>301</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -108,24 +82,11 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Название :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="dfggfd_2">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>100</y>
-       <width>81</width>
-       <height>26</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Адрес :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>150</y>
+       <x>170</x>
+       <y>90</y>
        <width>451</width>
        <height>31</height>
       </rect>
@@ -168,7 +129,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>150</y>
+       <y>90</y>
        <width>145</width>
        <height>31</height>
       </rect>
@@ -177,24 +138,11 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Рабочие часы :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="address_2">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>100</y>
-       <width>541</width>
-       <height>26</height>
-      </rect>
-     </property>
-     <property name="placeholderText">
-      <string>Введите адрес магазина</string>
-     </property>
-    </widget>
     <widget class="QCheckBox" name="checkBox">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>190</y>
+       <x>210</x>
+       <y>270</y>
        <width>341</width>
        <height>24</height>
       </rect>
@@ -203,12 +151,106 @@
       <string>Учитывать рабочие часы при поиске</string>
      </property>
     </widget>
+    <widget class="QFrame" name="frame_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>621</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>105</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Город :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="city">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>451</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Введите город, где находится магазин</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="street">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>50</y>
+        <width>451</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Введите улицу, на которой находится магазин</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="numberHouse">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>90</y>
+        <width>451</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Введите номер дома, в котором находится магазин</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>105</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Улица :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>131</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Номер дома :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>260</y>
+      <y>310</y>
       <width>701</width>
       <height>91</height>
      </rect>
@@ -232,50 +274,86 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;Какой параметр изменить?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>31</x>
        <y>50</y>
-       <width>361</width>
+       <width>641</width>
        <height>26</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QRadioButton" name="radioButton_10">
+       <widget class="QRadioButton" name="radioButton_name">
         <property name="text">
          <string>Название</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_16">
+       <widget class="QRadioButton" name="radioButton_working">
         <property name="text">
-         <string>Адрес</string>
+         <string>Рабочие часы</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_18">
+       <widget class="QRadioButton" name="radioButton_city">
         <property name="text">
-         <string>Рабочие часы</string>
+         <string>Город</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_street">
+        <property name="text">
+         <string>Улица</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_numberHouse">
+        <property name="text">
+         <string>Номер дома</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </widget>
-   <zorder>frame_2</zorder>
-   <zorder>frame</zorder>
-   <zorder>newVal</zorder>
-   <zorder>label_9</zorder>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>410</y>
+      <width>181</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Новое значение :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="newVal">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>410</y>
+      <width>511</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Введите новое значение, которое заменит значение выбранного параметра</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>560</y>
+     <x>320</x>
+     <y>570</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -293,8 +371,8 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>500</y>
+     <x>290</x>
+     <y>520</y>
      <width>201</width>
      <height>31</height>
     </rect>
