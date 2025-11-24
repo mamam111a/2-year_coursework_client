@@ -38,15 +38,15 @@ void user_menu::on_closeButton_clicked()
 
 void user_menu::on_pushButton_clicked()
 {
-
     FindItem *findItemWindow = new FindItem(this);
     findItemWindow->setAttribute(Qt::WA_DeleteOnClose);
     findItemWindow->AddShopsToListWidget(mainWindow->shopsList);
-
     findItemWindow->setGeometry(this->geometry());
+    connect(findItemWindow, &QObject::destroyed, this, [this]() {
+        this->show();
+    });
     findItemWindow->show();
     this->hide();
-
 }
 
 

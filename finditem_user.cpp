@@ -83,11 +83,15 @@ void FindItem::on_pushButton_clicked()
     this->close();
     QSize findSize = this->size();
     QPoint findPos = this->pos();
+
     QSize mainSize = usermenu->size();
     int x = findPos.x() + (findSize.width() - mainSize.width()) / 2;
     int y = findPos.y() + (findSize.height() - mainSize.height()) / 2;
+    if (usermenu) {
+        usermenu->show();
+    }
     usermenu->move(x, y);
-    usermenu->show();
+
 
 }
 void FindItem::on_pushButton_2_clicked()

@@ -25,6 +25,7 @@ private slots:
     void CopySelectedCells();
     void on_pushButton_clicked();
     void on_copyButton_clicked();
+    void on_pushButton_2_clicked();
 };
 
 #endif // FINDITEM_RESULT_H

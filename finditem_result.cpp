@@ -3,7 +3,8 @@
 #include "mainwindow.h"
 #include <QClipboard>
 #include <QMessageBox>
-
+#include <QFile>
+#include <QFileDialog>
 finditem_result::finditem_result(MainWindow *mainWin, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::finditem_result)
@@ -30,7 +31,7 @@ void finditem_result::CopySelectedCells()
             if (!copiedText.isEmpty()) copiedText += "\n";
             lastRow = item->row();
         } else {
-            copiedText += "\t";
+            copiedText += ";";
         }
         copiedText += item->text();
     }
@@ -43,6 +44,11 @@ void finditem_result::ShowSearchResultsBooks(const QString &message)
     if (rows.isEmpty()) {
         QMessageBox::information(this, "Результат", "Ничего не найдено.");
         return;
+    }
+    for (QString &row : rows) {
+        row = row.trimmed();
+        if (!row.isEmpty() && row[0] == '#')
+            row.remove(0, 1);
     }
 
     QTableWidget *table = ui->tableWidget;
@@ -85,10 +91,16 @@ void finditem_result::ShowSearchResultsBooks(const QString &message)
 
 
 void finditem_result::ShowSearchResultsShops(const QString &message) {
+
     QStringList rows = message.split("\n", Qt::SkipEmptyParts);
     if (rows.isEmpty()) {
         QMessageBox::information(this, "Результат", "Ничего не найдено.");
         return;
+    }
+    for (QString &row : rows) {
+        row = row.trimmed();
+        if (!row.isEmpty() && row[0] == '#')
+            row.remove(0, 1);
     }
 
     QTableWidget *table = ui->tableWidget;
@@ -125,10 +137,61 @@ void finditem_result::on_pushButton_clicked()
 {
     this->close();
 }
-
-
 void finditem_result::on_copyButton_clicked()
 {
     ui->copyButton->setText("Скопировано");
+}
+void finditem_result::on_pushButton_2_clicked()
+{
+
+    QFileDialog dialog(this);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setWindowTitle("Сохранить результаты");
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setNameFilters({"CSV файл (*.csv)", "Текстовый файл (*.txt)"});
+    dialog.setDefaultSuffix("csv");
+
+    if (!dialog.exec())
+        return;
+
+    QString fileName = dialog.selectedFiles().first();
+    QString selectedFilter = dialog.selectedNameFilter();
+    QString extension;
+    if (selectedFilter.contains("*.csv"))
+        extension = ".csv";
+    else if (selectedFilter.contains("*.txt"))
+        extension = ".txt";
+    QFileInfo fi(fileName);
+    if (fi.suffix().isEmpty()) {
+        fileName += extension;
+    } else if (fi.suffix().compare(extension.mid(1), Qt::CaseInsensitive) != 0) {
+        fileName = fi.path() + "/" + fi.completeBaseName() + extension;
+    }
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "Ошибка", "Не удалось открыть файл для записи!");
+        return;
+    }
+
+    QTextStream out(&file);
+    out.setEncoding(QStringConverter::Utf8);
+
+    QTableWidget *table = ui->tableWidget;
+    QStringList headers;
+    for (int col = 0; col < table->columnCount(); col++)
+        headers << table->horizontalHeaderItem(col)->text();
+    out << headers.join(";") << "\n";
+    for (int row = 0; row < table->rowCount(); row++) {
+        QStringList rowValues;
+        for (int col = 0; col < table->columnCount(); col++) {
+            QTableWidgetItem *item = table->item(row, col);
+            rowValues << (item ? item->text() : "");
+        }
+        out << rowValues.join(";") << "\n";
+    }
+
+    file.close();
+    QMessageBox::information(this, "Результат", "Данные успешно сохранены!");
 }
 
