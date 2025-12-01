@@ -129,13 +129,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="additionalinfo_2">
-        <property name="placeholderText">
-         <string>Введите доп. информацию экземпляра</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLineEdit" name="shopNumber_3">
         <property name="placeholderText">
          <string>Введите номер магазина, где хранится</string>
@@ -200,13 +193,6 @@
        <widget class="QLabel" name="dfgfgd_5">
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Цена :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="fdgfgd_2">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Доп. информация :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -317,13 +303,6 @@
        <widget class="QRadioButton" name="radioButton_7">
         <property name="text">
          <string>Цена</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radioButton_8">
-        <property name="text">
-         <string>Доп информация</string>
         </property>
        </widget>
       </item>

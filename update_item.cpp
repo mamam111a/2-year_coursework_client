@@ -23,7 +23,6 @@ update_item::update_item(adminMenu* adminmenu)
     group->addButton(ui->radioButton_5);
     group->addButton(ui->radioButton_6);
     group->addButton(ui->radioButton_7);
-    group->addButton(ui->radioButton_8);
     group->addButton(ui->radioButton_9);
 
     ui->radioButton->setChecked(true);
@@ -66,8 +65,6 @@ void update_item::on_pushButton_2_clicked()
         result = "quantity";
     } else if (ui->radioButton_7->isChecked()) {
         result = "price";
-    } else if (ui->radioButton_8->isChecked()) {
-        result = "additional_info";
     } else if (ui->radioButton_9->isChecked()) {
         result = "shop_id";
     }
@@ -79,7 +76,6 @@ void update_item::on_pushButton_2_clicked()
     QString publisher = ui->publisher_2->text();
     QString publisher_year = ui->publisher_year_2->text();
     QString price = ui->price_2->text();
-    QString additionalinfo = ui->additionalinfo_2->text();
     QString quantity = ui->quantity_2->text();
     QString shopnumber = ui->shopNumber_3->text();
 
@@ -87,14 +83,14 @@ void update_item::on_pushButton_2_clicked()
 
     if (section.isEmpty() && author.isEmpty() && title.isEmpty() &&
         publisher.isEmpty() && publisher_year.isEmpty() &&
-        price.isEmpty() && quantity.isEmpty() && shopnumber.isEmpty() && additionalinfo.isEmpty())
+        price.isEmpty() && quantity.isEmpty() && shopnumber.isEmpty())
     {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение");
         return;
     }
     if (section.contains('|') || author.contains('|') || title.contains('|') ||
         publisher.contains('|') || publisher_year.contains('|') ||
-        price.contains('|') || additionalinfo.contains('|') || quantity.contains('|') || shopnumber.contains('|'))
+        price.contains('|') || quantity.contains('|') || shopnumber.contains('|'))
     {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
@@ -184,7 +180,7 @@ void update_item::on_pushButton_2_clicked()
     }
 
 
-    QString line =  "updatebooks|" + shopnumber + "|" + section + "|" + author + "|" + title + "|" + publisher  + "|" + publisher_year + "|" + quantity + "|" + price + "|" + additionalinfo + "|" + result + "|" + newValue;
+    QString line =  "updatebooks|" + shopnumber + "|" + section + "|" + author + "|" + title + "|" + publisher  + "|" + publisher_year + "|" + quantity + "|" + price + "|"  + result + "|" + newValue;
     sendToServer(socketMain, line);
 
     ui->section_3->clear();
@@ -193,7 +189,6 @@ void update_item::on_pushButton_2_clicked()
     ui->publisher_2->clear();
     ui->publisher_year_2->clear();
     ui->price_2->clear();
-    ui->additionalinfo_2->clear();
     ui->quantity_2->clear();
     ui->newVal_2->clear();
 }

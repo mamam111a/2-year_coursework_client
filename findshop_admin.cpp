@@ -71,7 +71,7 @@ void findshop_admin::on_pushButton_2_clicked()
     bool includeWorkingHours = ui->checkBox->isChecked();
     QString line;
     if(includeWorkingHours) {
-        line = "findshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|" + timeStrB + " - " + timeStrA;
+        line = "findshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|" + timeStrB + "|" + timeStrA;
     }
     else{
         if (name.isEmpty() && city.isEmpty() && street.isEmpty() && numberHouse.isEmpty()) {

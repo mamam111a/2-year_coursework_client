@@ -60,8 +60,8 @@ void finditem_result::ShowSearchResultsBooks(const QString &message)
     table->clear();
     table->setColumnCount(11);
     table->setHorizontalHeaderLabels({
-        "Название магазина", "Адрес", "Время работы", "Жанр", "Автор", "Название",
-        "Издательство", "Год", "Количество","Цена", "Доп. информация"
+        "Название магазина", "Адрес", "Время открытия", "Время закрытия" ,"Жанр", "Автор", "Название",
+        "Издательство", "Год", "Количество","Цена"
     });
     table->setRowCount(rows.size());
 
@@ -72,7 +72,7 @@ void finditem_result::ShowSearchResultsBooks(const QString &message)
 
             item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
             item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-            if (col < 3) {
+            if (col < 4) {
                 item->setBackground(QBrush(QColor(220, 230, 250)));
             } else {
                 item->setBackground(QBrush(QColor(220, 250, 220)));
@@ -110,9 +110,9 @@ void finditem_result::ShowSearchResultsShops(const QString &message) {
     }
 
     table->clear();
-    table->setColumnCount(5);
+    table->setColumnCount(6);
     table->setHorizontalHeaderLabels({
-        "Название", "Город", "Улица","Номер здания", "Время работы"
+        "Название", "Город", "Улица","Номер здания", "Время открытия", "Время закрытия"
     });
     table->setRowCount(rows.size());
 

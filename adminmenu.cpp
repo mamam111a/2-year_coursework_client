@@ -111,6 +111,7 @@ void adminMenu::on_updateshops_clicked()
 
 void adminMenu::on_readbooks_clicked()
 {
+
     this->hide();
     finditem_admin finditemadmin(this);
     finditemadmin.setModal(true);

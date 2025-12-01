@@ -44,7 +44,6 @@ void add_item::on_pushButton_2_clicked()
     QString publisher = ui->publisher->text();
     QString publisher_year = ui->publisher_year->text();
     QString price = ui->price->text();
-    QString additionalinfo = ui->additionalinfo->text();
     QString quantity = ui->quantity->text();
     QString shopnumber = ui->shopNumber->text();
 
@@ -57,7 +56,7 @@ void add_item::on_pushButton_2_clicked()
     }
     if (section.contains('|') || author.contains('|') || title.contains('|') ||
         publisher.contains('|') || publisher_year.contains('|') ||
-        price.contains('|') || additionalinfo.contains('|') || quantity.contains('|') || shopnumber.contains('|'))
+        price.contains('|') ||  quantity.contains('|') || shopnumber.contains('|'))
     {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
@@ -91,7 +90,7 @@ void add_item::on_pushButton_2_clicked()
         QMessageBox::warning(this, "Ошибка", "Введено слишком большое число");
         return;
     }
-    QString line =  "addbooks|" + shopnumber + "|" + section + "|" + author + "|" + title + "|" + publisher  + "|" + publisher_year + "|" + quantity + "|" + price + "|" + additionalinfo;
+    QString line =  "addbooks|" + shopnumber + "|" + section + "|" + author + "|" + title + "|" + publisher  + "|" + publisher_year + "|" + quantity + "|" + price ;
     sendToServer(socketMain, line);
 
     ui->section->clear();
@@ -100,7 +99,6 @@ void add_item::on_pushButton_2_clicked()
     ui->publisher->clear();
     ui->publisher_year->clear();
     ui->price->clear();
-    ui->additionalinfo->clear();
     ui->quantity->clear();
     ui->shopNumber->clear();
 

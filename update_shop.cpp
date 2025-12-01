@@ -87,7 +87,7 @@ void update_shop::on_pushButton_2_clicked()
             QMessageBox::warning(this, "Ошибка", "Заполните хотя бы одно поле");
             return;
         }
-        line =  "updateshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|"+ "|" + result + "|" + newValue;
+        line =  "updateshops|" + name + "|" + city + "|" + street + "|" + numberHouse + "|" + "|" + result + "|" + newValue;
 
     }
 

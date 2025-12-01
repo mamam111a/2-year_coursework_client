@@ -40,14 +40,13 @@ void delete_item::on_pushButton_2_clicked()
     QString publisher = ui->publisher->text();
     QString publisher_year = ui->publisher_year->text();
     QString price = ui->price->text();
-    QString additionalinfo = ui->additionalinfo->text();
     QString quantity = ui->quantity->text();
     QString numberShop = ui->numbershop->text();
 
     // Проверка недопустимого символа '|'
     if (section.contains('|') || author.contains('|') || title.contains('|') ||
         publisher.contains('|') || publisher_year.contains('|') ||
-        price.contains('|') || additionalinfo.contains('|') || quantity.contains('|') || numberShop.contains('|'))
+        price.contains('|')  || quantity.contains('|') || numberShop.contains('|'))
     {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
@@ -88,14 +87,14 @@ void delete_item::on_pushButton_2_clicked()
 
     if (section.isEmpty() || author.isEmpty() || title.isEmpty() ||
         publisher.isEmpty() || publisher_year.isEmpty() ||
-        price.isEmpty() || additionalinfo.isEmpty() || quantity.isEmpty() || numberShop.isEmpty())
+        price.isEmpty()  || quantity.isEmpty() || numberShop.isEmpty())
     {
         QMessageBox::warning(this, "Ошибка", "Заполните все поля для удаления");
         return;
     }
 
     QString line = "deletebooks|" + numberShop + "|" + section + "|" + author + "|" + title + "|" +
-                   publisher + "|" + publisher_year + "|" + quantity + "|" + price + "|" + additionalinfo;
+                   publisher + "|" + publisher_year + "|" + quantity + "|" + price;
     sendToServer(socketMain, line);
 
     ui->section->clear();
@@ -104,7 +103,6 @@ void delete_item::on_pushButton_2_clicked()
     ui->publisher->clear();
     ui->publisher_year->clear();
     ui->price->clear();
-    ui->additionalinfo->clear();
     ui->quantity->clear();
     ui->numbershop->clear();
 }

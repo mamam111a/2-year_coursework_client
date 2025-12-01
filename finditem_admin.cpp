@@ -42,18 +42,17 @@ void finditem_admin::on_pushButton_2_clicked()
     QString publisher_year = ui->publisher_year->text();
     QString quantity = ui->quantity->text();
     QString price = ui->price->text();
-    QString additional_info = ui->additional_info->text();
     QString numShop = ui->numberShop->text();
 
     if (section.contains("|") || author.contains("|") || name.contains("|") ||
         publisher.contains("|") || publisher_year.contains("|") ||
-        quantity.contains("|") || price.contains("|") || additional_info.contains("|") || numShop.contains("|")) {
+        quantity.contains("|") || price.contains("|")  || numShop.contains("|")) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
     if (section.isEmpty() && author.isEmpty() && name.isEmpty() &&
         publisher.isEmpty() && publisher_year.isEmpty() &&
-        quantity.isEmpty() && price.isEmpty() && additional_info.isEmpty() && numShop.isEmpty()) {
+        quantity.isEmpty() && price.isEmpty()  && numShop.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение для поиска");
         return;
     }
@@ -95,7 +94,7 @@ void finditem_admin::on_pushButton_2_clicked()
     }
 
     QString message = "findbooks|" + numShop + "|" + section + "|" + author + "|" + name + "|" + publisher + "|" +
-                      publisher_year + "|" + quantity + "|" + price + "|" + additional_info + "|";
+                      publisher_year + "|" + quantity + "|" + price  + "|";
 
     sendToServer(socketMain, message);
 }
