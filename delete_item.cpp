@@ -4,6 +4,7 @@
 #include "globals.h"
 #include "sendInfo.h"
 #include <QDate>
+#include <QRegularExpression>
 using namespace std;
 delete_item::delete_item(adminMenu* adminmenu)
     : QDialog(adminmenu)
@@ -90,6 +91,20 @@ void delete_item::on_pushButton_2_clicked()
         price.isEmpty()  || quantity.isEmpty() || numberShop.isEmpty())
     {
         QMessageBox::warning(this, "Ошибка", "Заполните все поля для удаления");
+        return;
+    }
+    QStringList authorParts = author.trimmed().split(QRegularExpression("\\s+"));
+
+    if (authorParts.size() != 3) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Поле 'Автор' должно содержать ровно 3 слова\n(Имя Фамилия Отчество)");
+        return;
+    }
+    QRegularExpression fioRegex("^[А-Яа-яA-Za-z\\s-]+$");
+
+    if (!fioRegex.match(author).hasMatch()) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Поле 'Автор' должно содержать только буквы");
         return;
     }
 

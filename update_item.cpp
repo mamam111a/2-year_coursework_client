@@ -179,6 +179,36 @@ void update_item::on_pushButton_2_clicked()
         return;
     }
 
+    if(author.isEmpty() == false) {
+        QStringList authorParts = author.trimmed().split(QRegularExpression("\\s+"));
+        if (authorParts.size() != 3) {
+            QMessageBox::warning(this, "Ошибка",
+                                 "Поле 'Автор' должно содержать ровно 3 слова\n(Имя Фамилия Отчество)");
+            return;
+        }
+        QRegularExpression fioRegex("^[А-Яа-яA-Za-z\\s-]+$");
+
+        if (!fioRegex.match(author).hasMatch()) {
+            QMessageBox::warning(this, "Ошибка",
+                                 "Поле 'Автор' должно содержать только буквы");
+            return;
+        }
+    }
+    if(result == "author") {
+        QStringList authorParts = newValue.trimmed().split(QRegularExpression("\\s+"));
+        if (authorParts.size() != 3) {
+            QMessageBox::warning(this, "Ошибка",
+                                 "Поле 'Автор' должно содержать ровно 3 слова\n(Имя Фамилия Отчество)");
+            return;
+        }
+        QRegularExpression fioRegex("^[А-Яа-яA-Za-z\\s-]+$");
+
+        if (!fioRegex.match(newValue).hasMatch()) {
+            QMessageBox::warning(this, "Ошибка",
+                                 "Поле 'Автор' должно содержать только буквы");
+            return;
+        }
+    }
 
     QString line =  "updatebooks|" + shopnumber + "|" + section + "|" + author + "|" + title + "|" + publisher  + "|" + publisher_year + "|" + quantity + "|" + price + "|"  + result + "|" + newValue;
     sendToServer(socketMain, line);

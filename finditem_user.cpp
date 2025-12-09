@@ -161,6 +161,20 @@ void FindItem::on_pushButton_2_clicked()
     QString quantityDOStr = QString::number(quantityDO);
     QString priceOTStr = QString::number(priceOT);
     QString priceDOStr = QString::number(priceDO);
+    QStringList authorParts = author.trimmed().split(QRegularExpression("\\s+"));
+
+    if (author.isEmpty() == false && authorParts.size() != 3) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Поле 'Автор' должно содержать ровно 3 слова\n(Фамилия Имя Отчество)");
+        return;
+    }
+    QRegularExpression fioRegex("^[А-Яа-яA-Za-z\\s-]+$");
+
+    if (!fioRegex.match(author).hasMatch() && author.isEmpty() == false) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Поле 'Автор' должно содержать только буквы");
+        return;
+    }
 
     QString message = section + "|" + author + "|" + name + "|" + publisher + "|" + publisher_year + "|" + indString +
                       "|" + quantityOTStr + "|" + quantityDOStr + "|" + priceOTStr + "|" + priceDOStr;
