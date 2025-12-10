@@ -2,6 +2,7 @@
 #define FINDITEM_ADMIN_H
 #include "adminmenu.h"
 #include <QDialog>
+#include <QListWidgetItem>
 namespace Ui {
 class finditem_admin;
 }
@@ -18,7 +19,11 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
-
+    void CheckState(QListWidgetItem *changedItem);
+public slots:
+    void AddShopsToListWidget(const QStringList &shops);
+    void AddSectionsToComboBox(const QStringList &section);
+    void AddPublisherToComboBox(const QStringList &pub);
 private:
     Ui::finditem_admin *ui;
     adminMenu* adminmenu;

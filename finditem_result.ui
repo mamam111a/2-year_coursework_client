@@ -58,6 +58,11 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
      <height>601</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color:white</string>
    </property>

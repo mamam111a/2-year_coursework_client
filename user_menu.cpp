@@ -39,6 +39,8 @@ void user_menu::on_closeButton_clicked()
 void user_menu::on_pushButton_clicked()
 {
     FindItem *findItemWindow = new FindItem(this);
+    findItemWindow->AddSectionsToComboBox(mainWindow->sectionList);
+    findItemWindow->AddPublisherToComboBox(mainWindow->publisherList);
     findItemWindow->setAttribute(Qt::WA_DeleteOnClose);
     findItemWindow->AddShopsToListWidget(mainWindow->shopsList);
     findItemWindow->setGeometry(this->geometry());

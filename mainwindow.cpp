@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 #include "finditem_result.h"
 #include "sendInfo.h"
+#include <finditem_user.h>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -22,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(socketMain, &QTcpSocket::readyRead, this, &MainWindow::ReadReply);
     connect(socketMain, &QTcpSocket::connected, this, [](){ });
     connect(socketMain, &QTcpSocket::disconnected, this, [](){});
+    // В MainWindow.cpp после получения данных с сервера
+
     connect(socketMain, QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::errorOccurred),
             this, [this](QAbstractSocket::SocketError){
                 QMessageBox::critical(this, "Ошибка", "Ошибка соединения: " + socketMain->errorString() + "\nПриложение будет закрыто.");
@@ -107,6 +110,16 @@ void MainWindow::ReadReply()
             else if (message[0] == '%'){
                 QStringList shopList = message.mid(1).split('\n', Qt::SkipEmptyParts);
                 OpenFindShopResult(message);
+            }
+            else if (message[0] == '@') {
+                QStringList sections = message.mid(1).split('\n', Qt::SkipEmptyParts);
+                sectionList = sections;
+                emit DataServerSections(sections);
+            }
+            else if (message[0] == '?') {
+                QStringList publisher = message.mid(1).split('\n', Qt::SkipEmptyParts);
+                publisherList = publisher;
+                emit DataPublisherSections(publisher);
             }
         }
         sendToServer(socketMain, "OK");

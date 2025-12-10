@@ -24,6 +24,8 @@ private slots:
     void CheckState(QListWidgetItem *changedItem);
 public slots:
     void AddShopsToListWidget(const QStringList &shops);
+    void AddSectionsToComboBox(const QStringList &section);
+    void AddPublisherToComboBox(const QStringList &pub);
 private:
     Ui::FindItem *ui;
     user_menu* usermenu;

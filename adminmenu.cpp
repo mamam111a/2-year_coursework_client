@@ -47,13 +47,26 @@ void adminMenu::on_closeButton_clicked()
 void adminMenu::on_addbooks_clicked()
 {
     this->hide();
-    add_item additem(this);
-    additem.setModal(true);
-    additem.setGeometry(this->geometry());
-    additem.exec();
+
+
+    add_item *additem = new add_item(this);
+
+
+    additem->AddSectionsToComboBox(mainWindow->sectionList);
+    additem->AddPublisherToComboBox(mainWindow->publisherList);
+    additem->AddShopsToListWidget(mainWindow->shopsList);
+
+
+    additem->setAttribute(Qt::WA_DeleteOnClose);
+
+
+    additem->setModal(true);
+    additem->setGeometry(this->geometry());
+
+    additem->exec();
+
     this->show();
 }
-
 void adminMenu::on_addshops_clicked()
 {
     this->hide();
@@ -68,13 +81,27 @@ void adminMenu::on_addshops_clicked()
 void adminMenu::on_deletebooks_clicked()
 {
     this->hide();
-    delete_item deleteitem(this);
-    deleteitem.setModal(true);
-    deleteitem.setGeometry(this->geometry());
-    deleteitem.exec();
+
+
+    delete_item *deleteitem = new delete_item(this);
+
+
+    deleteitem->AddSectionsToComboBox(mainWindow->sectionList);
+    deleteitem->AddPublisherToComboBox(mainWindow->publisherList);
+    deleteitem->AddShopsToListWidget(mainWindow->shopsList);
+
+
+   deleteitem->setAttribute(Qt::WA_DeleteOnClose);
+
+
+    deleteitem->setModal(true);
+    deleteitem->setGeometry(this->geometry());
+
+
+    deleteitem->exec();
+
     this->show();
 }
-
 
 void adminMenu::on_deleteshops_clicked()
 {
@@ -90,10 +117,25 @@ void adminMenu::on_deleteshops_clicked()
 void adminMenu::on_updatebooks_clicked()
 {
     this->hide();
-    update_item updateitem(this);
-    updateitem.setModal(true);
-    updateitem.setGeometry(this->geometry());
-    updateitem.exec();
+
+
+    update_item *updateItem = new update_item(this);
+
+
+    updateItem->AddSectionsToComboBox(mainWindow->sectionList);
+    updateItem->AddPublisherToComboBox(mainWindow->publisherList);
+    updateItem->AddShopsToListWidget(mainWindow->shopsList);
+
+
+    updateItem->setAttribute(Qt::WA_DeleteOnClose);
+
+
+   updateItem->setModal(true);
+    updateItem->setGeometry(this->geometry());
+
+
+    updateItem->exec();
+
     this->show();
 }
 
@@ -113,10 +155,25 @@ void adminMenu::on_readbooks_clicked()
 {
 
     this->hide();
-    finditem_admin finditemadmin(this);
-    finditemadmin.setModal(true);
-    finditemadmin.setGeometry(this->geometry());
-    finditemadmin.exec();
+
+
+    finditem_admin *finditemadmin = new finditem_admin(this);
+
+
+    finditemadmin->AddSectionsToComboBox(mainWindow->sectionList);
+    finditemadmin->AddPublisherToComboBox(mainWindow->publisherList);
+    finditemadmin->AddShopsToListWidget(mainWindow->shopsList);
+
+
+    finditemadmin->setAttribute(Qt::WA_DeleteOnClose);
+
+
+    finditemadmin->setModal(true);
+    finditemadmin->setGeometry(this->geometry());
+
+
+    finditemadmin->exec();
+
     this->show();
 }
 

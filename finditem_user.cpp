@@ -14,7 +14,6 @@ FindItem::FindItem(user_menu* usermenu)
 {
     this->setFixedSize(800, 600);
     ui->setupUi(this);
-
     if(usermenu) {
         mainWindow = usermenu->mainWindow;
         connect(mainWindow, &MainWindow::DataServerShop, this, &FindItem::AddShopsToListWidget);
@@ -80,7 +79,7 @@ FindItem::~FindItem()
 
 void FindItem::on_pushButton_clicked()
 {
-    this->close();
+    //this->close();
     QSize findSize = this->size();
     QPoint findPos = this->pos();
 
@@ -94,16 +93,37 @@ void FindItem::on_pushButton_clicked()
 
 
 }
+void FindItem::AddSectionsToComboBox(const QStringList &section)
+{
+    ui->comboBox->clear();
+    ui->comboBox->addItem("Не выбрано");
+    for (const QString &x : section) {
+        QString text = x.section(';', 1);
+        ui->comboBox->addItem(text);
+    }
+}
+void FindItem::AddPublisherToComboBox(const QStringList &pub)
+{
+    ui->comboBox_2->clear();
+    ui->comboBox_2->addItem("Не выбрано");
+    for (const QString &x : pub) {
+        ui->comboBox_2->addItem(x);
+    }
+}
 void FindItem::on_pushButton_2_clicked()
 {
-    QString section = ui->section->text();
-    QString author = ui->author->text();
+    QString section = ui->comboBox->currentText();
+    QString authorName = ui->author_name->text();
+    QString authorFamilia = ui->author_familia->text();
+    QString authorOtchestvo = ui->author_otchestvo->text();
     QString name = ui->name->text();
-    QString publisher = ui->publisher->text();
-    QString publisher_year = ui->publisher_year->text();
+    QString publisher = ui->comboBox_2->currentText();
+    QString publisher_year = ui->pub_year->text();
+    if(section == "Не выбрано") section = "";
+    if(publisher == "Не выбрано") publisher = "";
 
-    if (section.contains("|") || author.contains("|") || name.contains("|") ||
-        publisher.contains("|") || publisher_year.contains("|")) {
+    if (section.contains("|") || authorName.contains("|") || name.contains("|") ||
+        publisher.contains("|") || publisher_year.contains("|") || authorFamilia.contains("|") || authorOtchestvo.contains("|")) {
         QMessageBox::warning(this, "Ошибка", "Недопустимый символ '|'");
         return;
     }
@@ -121,8 +141,8 @@ void FindItem::on_pushButton_2_clicked()
         ui->listWidget->item(0)->setCheckState(Qt::Checked);
     }
 
-    if (section.isEmpty() && author.isEmpty() && name.isEmpty() &&
-        publisher.isEmpty() && publisher_year.isEmpty()) {
+    if (section.isEmpty() && authorName.isEmpty() && name.isEmpty() &&
+        publisher.isEmpty() && publisher_year.isEmpty() && authorFamilia.isEmpty() && authorOtchestvo.isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Введите хотя бы одно значение для поиска");
         return;
     }
@@ -161,22 +181,43 @@ void FindItem::on_pushButton_2_clicked()
     QString quantityDOStr = QString::number(quantityDO);
     QString priceOTStr = QString::number(priceOT);
     QString priceDOStr = QString::number(priceDO);
-    QStringList authorParts = author.trimmed().split(QRegularExpression("\\s+"));
 
-    if (author.isEmpty() == false && authorParts.size() != 3) {
-        QMessageBox::warning(this, "Ошибка",
-                             "Поле 'Автор' должно содержать ровно 3 слова\n(Фамилия Имя Отчество)");
-        return;
-    }
     QRegularExpression fioRegex("^[А-Яа-яA-Za-z\\s-]+$");
 
-    if (!fioRegex.match(author).hasMatch() && author.isEmpty() == false) {
+    if (!fioRegex.match(authorName).hasMatch() && authorName.isEmpty() == false) {
         QMessageBox::warning(this, "Ошибка",
-                             "Поле 'Автор' должно содержать только буквы");
+                             "Поле 'Имя автора' должно содержать только буквы");
+        return;
+    }
+    if (!fioRegex.match(authorFamilia).hasMatch() && authorFamilia.isEmpty() == false) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Поле 'Фамилия автора' должно содержать только буквы");
+        return;
+    }
+    if (!fioRegex.match(authorOtchestvo).hasMatch() && authorOtchestvo.isEmpty() == false) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Поле 'Отчество автора' должно содержать только буквы");
         return;
     }
 
-    QString message = section + "|" + author + "|" + name + "|" + publisher + "|" + publisher_year + "|" + indString +
+    QString message = section + "|" + authorName + "|" + authorFamilia + "|" + authorOtchestvo + "|" + name + "|" + publisher + "|" + publisher_year + "|" + indString +
                       "|" + quantityOTStr + "|" + quantityDOStr + "|" + priceOTStr + "|" + priceDOStr;
     sendToServer(socketMain, message);
+
+
+    ui->author_name->clear();
+    ui->author_familia->clear();
+    ui->author_otchestvo->clear();
+    ui->name->clear();
+    ui->pub_year->clear();
+
+    ui->comboBox->setCurrentIndex(-1);
+    ui->comboBox_2->setCurrentIndex(-1);
+
+    for (int i = 0; i < ui->listWidget->count(); ++i) {
+        if (i == 0)
+            ui->listWidget->item(i)->setCheckState(Qt::Checked);
+        else
+            ui->listWidget->item(i)->setCheckState(Qt::Unchecked);
+    }
 }

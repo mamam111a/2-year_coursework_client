@@ -17,6 +17,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QStringList shopsList;
+    QStringList sectionList;
+    QStringList publisherList;
 
 private slots:
     void on_log_clicked();
@@ -34,6 +36,8 @@ private:
 signals:
     void ServerMessage(const QString &message);
     void DataServerShop(const QStringList &shops);
+    void DataServerSections(const QStringList &sections);
+    void DataPublisherSections(const QStringList publisher);
 };
 
 #endif

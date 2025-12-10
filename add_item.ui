@@ -17,22 +17,22 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
+     <y>0</y>
      <width>801</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;📑&lt;/span&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Добавление произведения&lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;📑&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;📑&lt;/span&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;Добавление произведения&lt;/span&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;📑&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>140</y>
-     <width>601</width>
-     <height>291</height>
+     <x>10</x>
+     <y>50</y>
+     <width>781</width>
+     <height>471</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -41,13 +41,249 @@
    <property name="title">
     <string/>
    </property>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>761</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Автор&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>761</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>741</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Имя :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="author_name">
+        <property name="placeholderText">
+         <string>Введите имя автора</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Фамилия :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="author_familia">
+        <property name="placeholderText">
+         <string>Введите фамилию автора</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Отчество :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="author_otchestvo">
+        <property name="placeholderText">
+         <string>Введите отчество автора</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>561</width>
-      <height>251</height>
+      <y>340</y>
+      <width>131</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Адрес &lt;br/&gt;магазина :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>330</y>
+      <width>601</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget {
+    background-color: #E8F9FF; /* очень бледный голубой фон */
+    color: black;              /* цвет текста */
+    border: 1px solid #A0C8D0; /* рамка */
+}
+
+QListWidget::item:selected {
+    background-color: #C0E8FF; /* цвет выбранного элемента */
+    color: black;              /* цвет текста выбранного элемента */
+}
+</string>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::MultiSelection</enum>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>761</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>741</width>
+       <height>129</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="dfggfd">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Издатель :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="dfgfgd">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Год издания :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="publisher_year">
+        <property name="placeholderText">
+         <string>Введите год издания экземпляра</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="fdggfd">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Количество :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="quantity">
+        <property name="placeholderText">
+         <string>Введите количество экземпляров</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="dfgfgd_2">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Цена :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="price">
+        <property name="placeholderText">
+         <string>Введите цену экземпляра</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox_pub">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* Общий стиль для всех QLineEdit */
+QLineEdit {
+    background-color: #f0f0f0; /* светло-серый фон */
+    color: #000000;            /* чёрный текст */
+    border: 1px solid #cccccc; /* светлая рамка */
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+/* Стиль для QComboBox — бледный голубой фон */
+QComboBox {
+    background-color: #e6f2ff; /* очень светлый голубой */
+    color: #000000;             /* чёрный текст */
+    border: 1px solid #b3d9ff; /* светлая рамка */
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+/* Стиль для стрелки выпадающего списка */
+QComboBox::drop-down {
+    border-left: 1px solid #b3d9ff;
+    background-color: #e6f2ff;
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Не выбрано</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>21</y>
+      <width>761</width>
+      <height>65</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -58,111 +294,55 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="section">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="placeholderText">
-        <string>Введите жанр произведения</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="dfg">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Автор :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="author">
-       <property name="placeholderText">
-        <string>Введите автора произведения</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
       <widget class="QLabel" name="titledfgfd">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Название :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="1" column="1">
       <widget class="QLineEdit" name="title">
        <property name="placeholderText">
         <string>Введите название произведения</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="dfggfd">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Издатель :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="comboBox_section">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
        </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="publisher">
+       <property name="styleSheet">
+        <string notr="true">/* Общий стиль для всех QLineEdit */
+QLineEdit {
+    background-color: #f0f0f0; /* светло-серый фон */
+    color: #000000;            /* чёрный текст */
+    border: 1px solid #cccccc; /* светлая рамка */
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+/* Стиль для QComboBox — бледный голубой фон */
+QComboBox {
+    background-color: #e6f2ff; /* очень светлый голубой */
+    color: #000000;             /* чёрный текст */
+    border: 1px solid #b3d9ff; /* светлая рамка */
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+/* Стиль для стрелки выпадающего списка */
+QComboBox::drop-down {
+    border-left: 1px solid #b3d9ff;
+    background-color: #e6f2ff;
+}
+</string>
+       </property>
        <property name="placeholderText">
-        <string>Введите издателя экземпляра</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="dfgfgd">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Год издания :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="publisher_year">
-       <property name="placeholderText">
-        <string>Введите год издания экземпляра</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="fdggfd">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Количество :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="quantity">
-       <property name="placeholderText">
-        <string>Введите количество экземпляров</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="dfgfgd_2">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Цена :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QLineEdit" name="price">
-       <property name="placeholderText">
-        <string>Введите цену экземпляра</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Номер магазина :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QLineEdit" name="shopNumber">
-       <property name="placeholderText">
-        <string>Введите номер магазина, где хранится экземпляр</string>
+        <string>Не выбрано</string>
        </property>
       </widget>
      </item>
@@ -173,7 +353,7 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>560</y>
+     <y>570</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -192,7 +372,7 @@ QPushButton { background-color: #F5F2E7; /* Ярко-красный */ color: bl
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>480</y>
+     <y>530</y>
      <width>201</width>
      <height>31</height>
     </rect>
